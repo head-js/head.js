@@ -1,0 +1,6 @@
+{
+  "name": "head.js",
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}

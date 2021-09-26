@@ -1,0 +1,8 @@
+{
+  "name": "@head.js/lib",
+  "version": "0.1.0",
+  "description": "@head.js/head.js",
+  "main": "index.js",
+  "author": "Albert Hbrls<shuaizhexu@gmail.com>",
+  "license": "MIT"
+}

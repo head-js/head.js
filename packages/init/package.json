@@ -1,6 +1,6 @@
 {
   "name": "@head.js/head.js-init",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "@head.js/head.js-init",
   "main": "index.js",
   "scripts": {

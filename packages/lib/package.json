@@ -1,6 +1,6 @@
 {
   "name": "@head.js/lib",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "@head.js/head.js",
   "main": "index.js",
   "author": "Albert Hbrls<shuaizhexu@gmail.com>",

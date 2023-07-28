@@ -16,7 +16,9 @@ export default [
     external: [
       'core-js/modules/es.object.to-string.js',
       'core-js/modules/es.promise.js',
+      'core-js/modules/es.regexp.exec.js',
       'core-js/modules/es.string.iterator.js',
+      'core-js/modules/es.string.split.js',
       'core-js/modules/web.dom-collections.iterator.js',
       'core-js/modules/es.array.iterator.js',
     ],

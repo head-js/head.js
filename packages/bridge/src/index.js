@@ -6,26 +6,45 @@ function Bridge() {
 
 
 Bridge.prototype._resolve = function (n) {
-  const instance = this.initialized[n];
-  let resolve = this.resolved[n].shift();
-  while (resolve) {
-    resolve(instance);
-    resolve = this.resolved[n].shift();
+  const [ name, version = '_' ] = n.split('@');
+  const instance = this.initialized[name][version];
+  let register = this.resolved[name].shift();
+  while (register) {
+    register(instance);
+    register = this.resolved[name].shift();
   }
 };
 
 
 Bridge.prototype.register = function (n, init) {
-  if (this.initialized[n] || this.registered[n]) { return; }
-  this.registered[n] = init;
-  this.initialized[n] = null;
-  this.resolved[n] = this.resolved[n] || [];
+  const [ name, version = '_' ] = n.split('@');
 
-  init((instance) => {
+  if (this.registered[name]) {
+    if (!this.registered[name][version]) {
+      console.warn(`${name}@${Object.keys(this.registered[name]).join(',')} detected. @${version} will not register.`);
+    }
+    return;
+  }
+
+  this.registered[name] = this.registered[name] || {};
+  this.registered[name][version] = this.registered[name][version] || [];
+
+  this.initialized[name] = this.initialized[name] || {};
+  this.initialized[name][version] = null;
+
+  this.resolved[name] = this.resolved[name] || [];
+
+  init((instance) => { // args::register
     if (instance.then) {
-      this.initialized[n] = { __promis3r3fhack__: instance };
+      this.initialized[name][version] = { __promis3r3fhack__: instance };
+      if (version !== '_') {
+        this.initialized[name]._ = { __promis3r3fhack__: instance };
+      }
     } else {
-      this.initialized[n] = instance;
+      this.initialized[name][version] = instance;
+      if (version !== '_') {
+        this.initialized[name]._ = instance;
+      }
     }
     this._resolve(n);
   });
@@ -33,21 +52,28 @@ Bridge.prototype.register = function (n, init) {
 
 
 Bridge.prototype._ready = function (n) {
+  const [ name, version = '_' ] = n.split('@');
   return new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
-    const d = this.initialized[n];
-    if (d) {
-      resolve(d);
+    const i1 = this.initialized[name];
+    if (i1) {
+      const instance = this.initialized[name][version];
+      if (instance) {
+        resolve(instance);
+      } else {
+        console.warn(`only the 1st ${name}@${Object.keys(this.initialized[name]).join(',')} will register and resolve.`);
+        resolve(this.initialized[name]._);
+      }
     } else {
-      this.resolved[n].push(resolve);
+      this.resolved[name].push(resolve);
     }
   });
 };
 
 
-Bridge.prototype.ready = function (deps) {
+Bridge.prototype.ready = function (ns) {
   const proms = [];
-  for (let i = 0; i < deps.length; i += 1) {
-    proms.push(this._ready(deps[i]));
+  for (let i = 0; i < ns.length; i += 1) {
+    proms.push(this._ready(ns[i]));
   }
   return Promise.all(proms).then((instances) => {
     const normalized = [];
@@ -60,6 +86,15 @@ Bridge.prototype.ready = function (deps) {
       }
     }
     return Promise.resolve(normalized);
+  });
+};
+
+
+Bridge.prototype.require = function (n, assets, init) {
+  const { head } = window;
+
+  head.require(assets, () => {
+    this.register(n, init);
   });
 };
 

@@ -16,7 +16,7 @@ gulp.task('preset-head', function () {
 
 gulp.task('preset-body', function () {
   return gulp
-    .src([ './require.js', './bridge.js', './emitter.js' ])
+    .src([ './emitter.js', './require.js', './bridge.js' ])
     .pipe(trim())
     .pipe(concat('preset-body.js'))
     .pipe(rev())

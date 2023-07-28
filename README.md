@@ -19,14 +19,14 @@ The only script in your `<head>`.
     <div id="root"></div>
 
     <script>
+    /* @head.js/snippet-emitter 0.0.0 */
+    head.emitter.on = (evt: String, fn: Function) => {};
+    head.emitter.emit = (evt: String, payload: Json) => {};
     /* @head.js/snippet-require 0.0.0 */
     head.require = (assets: Array<String>, done: Function) => {};
     /* @head.js/snippet-bridge 0.0.0 */
     head.bridge.register = (name: String, register: Function) => {};
     head.bridge.ready = async (name: String): Sdk => {};
-    /* @head.js/snippet-emitter 0.0.0 */
-    head.emitter.on = (evt: String, fn: Function) => {};
-    head.emitter.emit = (evt: String, payload: Json) => {};
     </script>
 
     <script>
@@ -36,8 +36,8 @@ The only script in your `<head>`.
     <script src="umi.js">
       head.require([ 'http://cdn.example.com/a.css', 'http://cdn.example.com/b.js' ], () => {});
 
-      head.bridge.register('com.example.sdk', (register) => {
-        head.require(['http://cdn.example.com/sdk.js'], () => {
+      head.bridge.register('com.example.sdk@1.0.0', (register) => {
+        head.require([ 'http://cdn.example.com/sdk-1.0.0.css', 'http://cdn.example.com/sdk-1.0.0.js' ], () => {
           const { SdkFactory } = window;
           const sdk = new SdkFactory();
           register(sdk);
@@ -45,7 +45,7 @@ The only script in your `<head>`.
       });
     </script>
     <script src="chunk-1.js">
-      const sdk = await head.bridge.ready('com.example.sdk');
+      const [ sdk ] = await head.bridge.ready(['com.example.sdk@1.0.0']);
       sdk.do();
     </script>
 

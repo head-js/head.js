@@ -26,14 +26,14 @@ The only script in your `<head>`.
     head.require = (assets: Array<String>, done: Function) => {};
     /* @head.js/snippet-bridge 0.0.0 */
     head.bridge.register = (name: String, register: Function) => {};
-    head.bridge.ready = async (name: String): Sdk => {};
+    head.bridge.initialize = async (name: String): Sdk => {};
     </script>
 
     <script>
     /* @head.js/snippet-container 0.0.0 */
     </script>
 
-    <script src="umi.js">
+    <script src="app.js">
       head.require([ 'http://cdn.example.com/a.css', 'http://cdn.example.com/b.js' ], () => {});
 
       head.bridge.register('com.example.sdk@1.0.0', (register) => {
@@ -45,7 +45,7 @@ The only script in your `<head>`.
       });
     </script>
     <script src="chunk-1.js">
-      const [ sdk ] = await head.bridge.ready(['com.example.sdk@1.0.0']);
+      const [ sdk ] = await head.bridge.initialize(['com.example.sdk@1.0.0']);
       sdk.do();
     </script>
 

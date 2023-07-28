@@ -51,8 +51,10 @@ Bridge.prototype.register = function (n, init) {
 };
 
 
-Bridge.prototype._ready = function (n) {
+Bridge.prototype._initialize = function (n) {
   const [ name, version = '_' ] = n.split('@');
+  this.resolved[name] = this.resolved[name] || [];
+
   return new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
     const i1 = this.initialized[name];
     if (i1) {
@@ -60,8 +62,13 @@ Bridge.prototype._ready = function (n) {
       if (instance) {
         resolve(instance);
       } else {
-        console.warn(`only the 1st ${name}@${Object.keys(this.initialized[name]).join(',')} will register and resolve.`);
-        resolve(this.initialized[name]._);
+        const _ = this.initialized[name]._; // eslint-disable-line prefer-destructuring
+        if (_) {
+          console.warn(`only the 1st ${name}@${Object.keys(this.initialized[name]).join(',')} will register and resolve.`);
+          resolve(_);
+        } else {
+          this.resolved[name].push(resolve);
+        }
       }
     } else {
       this.resolved[name].push(resolve);
@@ -70,10 +77,10 @@ Bridge.prototype._ready = function (n) {
 };
 
 
-Bridge.prototype.ready = function (ns) {
+Bridge.prototype.initialize = function (ns) {
   const proms = [];
   for (let i = 0; i < ns.length; i += 1) {
-    proms.push(this._ready(ns[i]));
+    proms.push(this._initialize(ns[i]));
   }
   return Promise.all(proms).then((instances) => {
     const normalized = [];
@@ -90,11 +97,36 @@ Bridge.prototype.ready = function (ns) {
 };
 
 
+Bridge.prototype.ready = function (n) {
+  const [ name, version = '_' ] = n.split('@');
+
+  const i1 = this.initialized[name];
+  if (i1) {
+    const instance = this.initialized[name][version];
+    if (instance) {
+      return instance;
+    } else {
+      const _ = this.initialized[name]._; // eslint-disable-line prefer-destructuring
+      if (_) {
+        console.warn(`only the 1st ${name}@${Object.keys(this.initialized[name]).join(',')} will register and resolve.`);
+        return _;
+      } else {
+        throw new Error('check docs about `await bridge.initialize`');
+      }
+    }
+  } else {
+    throw new Error('check docs about `await bridge.initialize`');
+  }
+};
+
+
 Bridge.prototype.require = function (n, assets, init) {
   const { head } = window;
 
-  head.require(assets, () => {
-    this.register(n, init);
+  this.register(n, (register) => {
+    head.require(assets, () => {
+      init(register);
+    });
   });
 };
 

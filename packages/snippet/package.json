@@ -1,10 +1,14 @@
 {
   "name": "@head.js/snippet",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "@head.js/snippet-*",
   "main": "index.js",
   "author": "Albert Hbrls<shuaizhexu@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/head-js/head.js"
+  },
   "scripts": {
     "build": "gulp"
   },

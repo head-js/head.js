@@ -24,30 +24,35 @@ n.getAttribute(r)?(i=setTimeout(d.bind(null,void 0,{type:"timeout",target:n}),3e
 n.onload=d.bind(null,n.onload)):d(void 0,{type:"load",target:n}),o&&document.head.appendChild(n),n}
 var o=new RegExp("\\.css");return function(e,r,i){var a,l=0,u=0;function d(e){0===(l-=1)&&0===u&&r()}function c(e){u-=1,
 0===l&&0===u&&r()}for(var s=0;s<e.length;s+=1)a=e[s],o.test(a)?(l+=1,n(a,d)):(u+=1,t(a,c))}}();
-/* @head.js/snippet-bridge 0.4.0 */
-this.head=this.head||{},this.head.bridge=function(){"use strict";function t(t,i){return function(t){
-if(Array.isArray(t))return t}(t)||function(t,e){
-var i=null==t?null:"undefined"!=typeof Symbol&&t[Symbol.iterator]||t["@@iterator"];if(null!=i){
-var r,n,s,o,l=[],a=!0,h=!1;try{if(s=(i=i.call(t)).next,0===e){if(Object(i)!==i)return;a=!1
-}else for(;!(a=(r=s.call(i)).done)&&(l.push(r.value),l.length!==e);a=!0);}catch(t){h=!0,n=t}finally{try{
-if(!a&&null!=i.return&&(o=i.return(),Object(o)!==o))return}finally{if(h)throw n}}return l}}(t,i)||function(t,i){
-if(!t)return;if("string"==typeof t)return e(t,i);var r=Object.prototype.toString.call(t).slice(8,-1)
-;"Object"===r&&t.constructor&&(r=t.constructor.name);if("Map"===r||"Set"===r)return Array.from(t)
-;if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return e(t,i)}(t,i)||function(){
+/* @head.js/snippet-bridge 0.4.2 */
+this.head=this.head||{},this.head.bridge=function(){"use strict";function i(i,e){return function(i){
+if(Array.isArray(i))return i}(i)||function(i,t){
+var e=null==i?null:"undefined"!=typeof Symbol&&i[Symbol.iterator]||i["@@iterator"];if(null!=e){
+var r,n,s,o,a=[],l=!0,h=!1;try{if(s=(e=e.call(i)).next,0===t){if(Object(e)!==e)return;l=!1
+}else for(;!(l=(r=s.call(e)).done)&&(a.push(r.value),a.length!==t);l=!0);}catch(i){h=!0,n=i}finally{try{
+if(!l&&null!=e.return&&(o=e.return(),Object(o)!==o))return}finally{if(h)throw n}}return a}}(i,e)||function(i,e){
+if(!i)return;if("string"==typeof i)return t(i,e);var r=Object.prototype.toString.call(i).slice(8,-1)
+;"Object"===r&&i.constructor&&(r=i.constructor.name);if("Map"===r||"Set"===r)return Array.from(i)
+;if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return t(i,e)}(i,e)||function(){
 throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
-}()}function e(t,e){(null==e||e>t.length)&&(e=t.length);for(var i=0,r=new Array(e);i<e;i++)r[i]=t[i];return r}
-function i(){this.registered={},this.initialized={},this.resolved={}}return i.prototype._resolve=function(e){
-for(var i=t(e.split("@"),2),r=i[0],n=i[1],s=void 0===n?"_":n,o=this.initialized[r][s],l=this.resolved[r].shift();l;)l(o),
-l=this.resolved[r].shift()},i.prototype.register=function(e,i){var r=t(e.split("@"),2),n=r[0],s=r[1],o=void 0===s?"_":s
+}()}function t(i,t){(null==t||t>i.length)&&(t=i.length);for(var e=0,r=new Array(t);e<t;e++)r[e]=i[e];return r}
+function e(){this.registered={},this.initialized={},this.resolved={}}return e.prototype._resolve=function(t){
+for(var e=i(t.split("@"),2),r=e[0],n=e[1],s=void 0===n?"_":n,o=this.initialized[r][s],a=this.resolved[r].shift();a;)a(o),
+a=this.resolved[r].shift()},e.prototype.register=function(t,e){var r=i(t.split("@"),2),n=r[0],s=r[1],o=void 0===s?"_":s
 ;this.registered[n]?this.registered[n][o]||console.warn("".concat(n,"@").concat(Object.keys(this.registered[n]).join(",")," detected. @").concat(o," will not register.")):(this.registered[n]=this.registered[n]||{},
 this.registered[n][o]=this.registered[n][o]||[],this.initialized[n]=this.initialized[n]||{},this.initialized[n][o]=null,
-this.resolved[n]=this.resolved[n]||[],i((t=>{t.then?(this.initialized[n][o]={__promis3r3fhack__:t},
-"_"!==o&&(this.initialized[n]._={__promis3r3fhack__:t})):(this.initialized[n][o]=t,"_"!==o&&(this.initialized[n]._=t)),
-this._resolve(e)})))},i.prototype._ready=function(e){var i=t(e.split("@"),2),r=i[0],n=i[1],s=void 0===n?"_":n
-;return new Promise(((t,e)=>{if(this.initialized[r]){var i=this.initialized[r][s]
-;i?t(i):(console.warn("only the 1st ".concat(r,"@").concat(Object.keys(this.initialized[r]).join(",")," will register and resolve.")),
-t(this.initialized[r]._))}else this.resolved[r].push(t)}))},i.prototype.ready=function(t){
-for(var e=[],i=0;i<t.length;i+=1)e.push(this._ready(t[i]));return Promise.all(e).then((t=>{
-for(var e=[],i=0;i<t.length;i+=1){var r=t[i];r.__promis3r3fhack__?e.push(r.__promis3r3fhack__):e.push(r)}
-return Promise.resolve(e)}))},i.prototype.require=function(t,e,i){window.head.require(e,(()=>{this.register(t,i)}))},
-new i}();
+this.resolved[n]=this.resolved[n]||[],e((i=>{i.then?(this.initialized[n][o]={__promis3r3fhack__:i},
+"_"!==o&&(this.initialized[n]._={__promis3r3fhack__:i})):(this.initialized[n][o]=i,"_"!==o&&(this.initialized[n]._=i)),
+this._resolve(t)})))},e.prototype._initialize=function(t){var e=i(t.split("@"),2),r=e[0],n=e[1],s=void 0===n?"_":n
+;return this.resolved[r]=this.resolved[r]||[],new Promise(((i,t)=>{if(this.initialized[r]){var e=this.initialized[r][s]
+;if(e)i(e);else{var n=this.initialized[r]._
+;n?(console.warn("only the 1st ".concat(r,"@").concat(Object.keys(this.initialized[r]).join(",")," will register and resolve.")),
+i(n)):this.resolved[r].push(i)}}else this.resolved[r].push(i)}))},e.prototype.initialize=function(i){
+for(var t=[],e=0;e<i.length;e+=1)t.push(this._initialize(i[e]));return Promise.all(t).then((i=>{
+for(var t=[],e=0;e<i.length;e+=1){var r=i[e];r.__promis3r3fhack__?t.push(r.__promis3r3fhack__):t.push(r)}
+return Promise.resolve(t)}))},e.prototype.ready=function(t){var e=i(t.split("@"),2),r=e[0],n=e[1],s=void 0===n?"_":n
+;if(this.initialized[r]){var o=this.initialized[r][s];if(o)return o;var a=this.initialized[r]._
+;if(a)return console.warn("only the 1st ".concat(r,"@").concat(Object.keys(this.initialized[r]).join(",")," will register and resolve.")),
+a;throw new Error("check docs about `await bridge.initialize`")}
+throw new Error("check docs about `await bridge.initialize`")},e.prototype.require=function(i,t,e){var r=window.head
+;this.register(i,(i=>{r.require(t,(()=>{e(i)}))}))},new e}();

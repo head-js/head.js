@@ -3,6 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
+import { name, version } from './package.json';
+
+
+const banner = `/* ${name} ${version} */`;
 
 
 export default [
@@ -35,10 +39,11 @@ export default [
       terser({
         format: {
           max_line_len: 120,
+          preamble: banner,
         }
       }),
     ],
 
-    output: { file: '../../packages/lib/require.js', format: 'iife', name: 'head.require', exports: 'default' },
+    output: { dir: '../snippet', entryFileNames: 'require-[hash].js', format: 'iife', name: 'head.require', exports: 'default', banner },
   },
 ];

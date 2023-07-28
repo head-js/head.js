@@ -1,4 +1,4 @@
-/* @head.js/head.js-require 0.0.2 */
+/* @head.js/snippet-require 0.3.0 */
 this.head=this.head||{},this.head.require=function(){"use strict";var e={};function t(t,r){if(e[t])e[t].push(r);else{
 for(var n,o,i,a=document.getElementsByTagName("script"),l=0;l<a.length;l+=1){var u=a[l];if(u.getAttribute("src")===t){
 n=u;break}}if(!r)return n;n||(o=!0,(n=document.createElement("script")).timeout=30,n.src=t,n.async=!0),e[t]=[r],

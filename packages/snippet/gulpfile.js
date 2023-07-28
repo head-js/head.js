@@ -14,4 +14,14 @@ gulp.task('preset-head', function () {
 });
 
 
-gulp.task('default', gulp.series('preset-head'), () => {});
+gulp.task('preset-body', function () {
+  return gulp
+    .src([ './require.js', './bridge.js', './emitter.js' ])
+    .pipe(trim())
+    .pipe(concat('preset-body.js'))
+    .pipe(rev())
+    .pipe(gulp.dest('./'));
+});
+
+
+gulp.task('default', gulp.series('preset-head', 'preset-body'), () => {});

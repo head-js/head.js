@@ -1,4 +1,4 @@
-/* @head.js/head.js-emitter 0.0.2 */
+/* @head.js/snippet-emitter 0.3.0 */
 this.head=this.head||{},this.head.emitter=function(){"use strict";function t(t,n){n=n||0
 ;for(var e=t.length-n,r=new Array(e);e--;)r[e]=t[e+n];return r}function n(){return this._events=Object.create(null),this
 }n.prototype.$on=function(t,n){var e=this;return(e._events[t]||(e._events[t]=[])).push(n),e},

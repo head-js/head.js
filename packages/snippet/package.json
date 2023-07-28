@@ -1,0 +1,17 @@
+{
+  "name": "@head.js/snippet",
+  "version": "0.3.0",
+  "description": "@head.js/snippet-*",
+  "main": "index.js",
+  "author": "Albert Hbrls<shuaizhexu@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "4.0.2",
+    "gulp-concat": "2.6.1",
+    "gulp-rev": "9.0.0",
+    "gulp-trim": "1.0.2"
+  }
+}

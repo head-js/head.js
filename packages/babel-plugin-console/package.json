@@ -1,0 +1,33 @@
+{
+  "name": "@head.js/babel-plugin-console",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/plugin.cjs",
+  "type": "module",
+  "scripts": {
+    "build": "rollup --config --strictDeprecations",
+    "test": "node ./test/spec.cjs"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.18.13",
+    "@babel/eslint-parser": "7.18.9",
+    "@babel/generator": "7.18.13",
+    "@babel/helper-plugin-utils": "7.18.9",
+    "@babel/parser": "7.18.13",
+    "@babel/preset-env": "7.18.10",
+    "@babel/template": "7.18.10",
+    "@babel/traverse": "7.18.13",
+    "@babel/types": "7.18.13",
+    "@rollup/plugin-babel": "6.0.3",
+    "@rollup/plugin-commonjs": "23.0.7",
+    "@rollup/plugin-eslint": "9.0.4",
+    "@rollup/plugin-json": "5.0.2",
+    "@rollup/plugin-node-resolve": "15.0.2",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb": "18.2.0",
+    "rollup": "3.12.1",
+    "vanilla.js": "0.2.11"
+  }
+}

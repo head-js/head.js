@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+  <link rel="icon" href="/rsrc/img/favicon.ico" />
+
+  <title>@head.js/snippet-modernizr</title>
+
+  <style>
+    ul li { color: #123456; }
+    .feature-failed { color: #f50; }
+  </style>
+</head>
+<body>
+    
+  <div>
+    <h4>User Agent</h4>
+    <ul class="js-useragent"></ul>
+
+    <h4>Baseline</h4>
+    <ul class="js-baseline"></ul>
+
+    <h4>Optimistic</h4>
+    <ul class="js-optimistic"></ul>
+  </div>
+
+  <script src="/rsrc/js/modernizr-aee143612b.js"></script>
+
+  <script>
+    // vanilla.js/lodash/handlerbars.js
+    function $tpl(tpl, locals, filters) {
+      filters = filters || {};
+      
+      return tpl.replace(/{{\s*(\w+)(?:\s*\|\s*(\w+))?\s*}}/g,
+        function(match, key, filterName) {
+          var value = locals[key] !== undefined ? locals[key] : "";
+          if (filterName && filters[filterName]) {
+            value = filters[filterName](value);
+          }
+          return value;
+        });
+    }
+
+    // vanilla.js/jquery/html.js
+    function $html(selector, html) {
+      // The selector should return ONE and only ONE element
+      var el = document.querySelector(selector);
+      el.innerHTML = html;
+      return el;
+    };
+
+    var TPL = '<li class="{{ klass }}">{{ feature }}</li>';
+
+    $html('.js-useragent', $tpl(TPL, { feature: navigator.userAgent, klass: '' }));
+
+    var BASELINE = {
+      'es6/promieses': 'promises',
+      'es6/arrow': 'arrow',
+      'es6/rest-parameters': 'restparameters',
+      'es6/spread-array': 'spreadarray',
+    };
+
+    var f1;
+    var baseline = [];
+    for (f1 in BASELINE) {
+      baseline.push($tpl(TPL, { feature: f1, klass: Modernizr[BASELINE[f1]] ? '': 'feature-failed' }));
+    }
+    $html('.js-baseline', baseline.join(''));
+
+    var OPTIMISTIC = {
+      'es7/spread-object': 'spreadobject'
+    };
+
+    var f2;
+    var optimistic = [];
+    for (f2 in OPTIMISTIC) {
+      optimistic.push($tpl(TPL, { feature: f2, klass: Modernizr[OPTIMISTIC[f2]] ? '': 'feature-failed' }));
+    }
+    $html('.js-optimistic', optimistic.join(''));
+  </script>
+
+  <script src="/unpkg/@cloudcare/browser-rum@3.2.24/bundle/dataflux-rum.js"></script>
+  <script>
+    window.DATAFLUX_RUM && window.DATAFLUX_RUM.init({
+      applicationId: 'de',
+      site: 'https://rum-openway.guance.com',
+      clientToken: '2OQwyC4AulthZZNx7lwSRLAZpOaqbyC26ATF0pYdC34y7MP31A',
+      env: 'production',
+      version: '0.5.0',
+      service: 'browser',
+      sessionSampleRate: 100,
+      sessionOnErrorSampleRate: 0,
+      sessionReplaySampleRate: 0,
+      sessionReplayOnErrorSampleRate: 0,
+      trackInteractions: false
+    });
+  </script>
+</body>
+</html>

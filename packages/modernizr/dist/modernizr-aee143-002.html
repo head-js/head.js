@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+  <link rel="icon" href="/rsrc/img/favicon.ico" />
+
+  <title>@head.js/snippet-modernizr</title>
+
+  <script>
+  /* @head.js/snippet-init 0.5.1 */
+  !function(){const n=window||__hlobal__;n.head=function(o,_,a){a||(a=_,_=o,o="head"),n[o][_]=a}}();
+  </script>
+
+  <style>
+    ul li { color: #123456; }
+    .feature-failed { color: #f50; }
+  </style>
+</head>
+<body>
+    
+  <div>
+    <h4>User Agent</h4>
+    <ul class="js-useragent"></ul>
+
+    <h4>Baseline</h4>
+    <ul class="js-baseline"></ul>
+
+    <h4>Optimistic</h4>
+    <ul class="js-optimistic"></ul>
+  </div>
+
+  <script src="/rsrc/js/modernizr-aee143612b.js"></script>
+
+  <script>
+  /* @head.js/snippet-agent 0.5.0 */
+  !function(){
+  var i,e="user-agent",o="",r="function",t="undefined",a="object",s="string",n="browser",w="cpu",b="device",d="engine",c="os",l="result",u="name",h="type",m="vendor",p="version",f="architecture",v="major",g="model",k="console",x="mobile",y="tablet",C="smarttv",T="wearable",S="xr",_="embedded",O="inapp",q="brands",M="formFactors",z="fullVersionList",j="platform",A="platformVersion",B="bitness",H="sec-ch-ua",U="sec-ch-ua-platform",N=[q,z,x,g,j,A,f,M,B],F="Amazon",I="Apple",E="ASUS",P="BlackBerry",R="Google",V="Huawei",L="Lenovo",D="Honor",G="LG",$="Microsoft",W="Motorola",X="Nvidia",Y="OnePlus",K="OPPO",Q="Samsung",Z="Sharp",J="Sony",ii="Xiaomi",ei="Zebra",oi="Chromium",ri="Chromecast",ti="Opera",ai="Facebook",si="Windows",ni=typeof window!==t&&window.navigator?window.navigator:void 0,wi=ni&&ni.userAgentData?ni.userAgentData:void 0,bi=function(i){
+  for(var e={},o=0;o<i.length;o++)e[i[o].toUpperCase()]=i[o];return e},di=function(i,e){if(typeof i===a&&i.length>0){
+  for(var o in i)if(hi(i[o])==hi(e))return!0;return!1}return!!li(i)&&-1!==hi(e).indexOf(hi(i))},ci=function(i,e){
+  for(var o in i)return/^(browser|cpu|device|engine|os)$/.test(o)||!!e&&ci(i[o])},li=function(i){return typeof i===s
+  },ui=function(i){if(i){for(var e=[],o=fi(/\\?\"/g,i).split(","),r=0;r<o.length;r++)if(o[r].indexOf(";")>-1){
+  var t=gi(o[r]).split(";v=");e[r]={brand:t[0],version:t[1]}}else e[r]=gi(o[r]);return e}},hi=function(i){
+  return li(i)?i.toLowerCase():i},mi=function(i){return li(i)?fi(/[^\d\.]/g,i).split(".")[0]:void 0},pi=function(i){
+  for(var e in i){var o=i[e];typeof o==a&&2==o.length?this[o[0]]=o[1]:this[o]=void 0}return this},fi=function(i,e){
+  return li(e)?e.replace(i,o):e},vi=function(i){return fi(/\\?\"/g,i)},gi=function(i,e){if(li(i))return i=fi(/^\s\s*/,i),
+  typeof e===t?i:i.substring(0,500)},ki=function(i,e){if(i&&e)for(var o,t,s,n,w,b,d=0;d<e.length&&!w;){var c=e[d],l=e[d+1]
+  ;for(o=t=0;o<c.length&&!w&&c[o];)if(w=c[o++].exec(i))for(s=0;s<l.length;s++)b=w[++t],
+  typeof(n=l[s])===a&&n.length>0?2===n.length?typeof n[1]==r?this[n[0]]=n[1].call(this,b):this[n[0]]=n[1]:3===n.length?typeof n[1]!==r||n[1].exec&&n[1].test?this[n[0]]=b?b.replace(n[1],n[2]):void 0:this[n[0]]=b?n[1].call(this,b,n[2]):void 0:4===n.length&&(this[n[0]]=b?n[3].call(this,b.replace(n[1],n[2])):void 0):this[n]=b||void 0
+  ;d+=2}},xi=function(i,e){for(var o in e)if(typeof e[o]===a&&e[o].length>0){
+  for(var r=0;r<e[o].length;r++)if(di(e[o][r],i))return"?"===o?void 0:o}else if(di(e[o],i))return"?"===o?void 0:o
+  ;return e.hasOwnProperty("*")?e["*"]:i},yi={ME:"4.90","NT 3.11":"NT3.51","NT 4.0":"NT4.0",2e3:"NT 5.0",
+  XP:["NT 5.1","NT 5.2"],Vista:"NT 6.0",7:"NT 6.1",8:"NT 6.2",8.1:"NT 6.3",10:["NT 6.4","NT 10.0"],RT:"ARM"},Ci={
+  embedded:"Automotive",mobile:"Mobile",tablet:["Tablet","EInk"],smarttv:"TV",wearable:"Watch",xr:["VR","XR"],
+  "?":["Desktop","Unknown"],"*":void 0},Ti={
+  browser:[[/\b(?:crmo|crios)\/([\w\.]+)/i],[p,[u,"Mobile Chrome"]],[/edg(?:e|ios|a)?\/([\w\.]+)/i],[p,[u,"Edge"]],[/(opera mini)\/([-\w\.]+)/i,/(opera [mobiletab]{3,6})\b.+version\/([-\w\.]+)/i,/(opera)(?:.+version\/|[\/ ]+)([\w\.]+)/i],[u,p],[/opios[\/ ]+([\w\.]+)/i],[p,[u,"Opera Mini"]],[/\bop(?:rg)?x\/([\w\.]+)/i],[p,[u,"Opera GX"]],[/\bopr\/([\w\.]+)/i],[p,[u,ti]],[/\bb[ai]*d(?:uhd|[ub]*[aekoprswx]{5,6})[\/ ]?([\w\.]+)/i],[p,[u,"Baidu"]],[/\b(?:mxbrowser|mxios|myie2)\/?([-\w\.]*)\b/i],[p,[u,"Maxthon"]],[/(kindle)\/([\w\.]+)/i,/(lunascape|maxthon|netfront|jasmine|blazer|sleipnir)[\/ ]?([\w\.]*)/i,/(avant|iemobile|slim(?:browser|boat|jet))[\/ ]?([\d\.]*)/i,/(?:ms|\()(ie) ([\w\.]+)/i,/(flock|rockmelt|midori|epiphany|silk|skyfire|ovibrowser|bolt|iron|vivaldi|iridium|phantomjs|bowser|qupzilla|falkon|rekonq|puffin|brave|whale(?!.+naver)|qqbrowserlite|duckduckgo|klar|helio|(?=comodo_)?dragon|otter|dooble|(?:lg |qute)browser)\/([-\w\.]+)/i,/(heytap|ovi|115|surf)browser\/([\d\.]+)/i,/(ecosia|weibo)(?:__| \w+@)([\d\.]+)/i],[u,p],[/quark(?:pc)?\/([-\w\.]+)/i],[p,[u,"Quark"]],[/\bddg\/([\w\.]+)/i],[p,[u,"DuckDuckGo"]],[/(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i],[p,[u,"UCBrowser"]],[/microm.+\bqbcore\/([\w\.]+)/i,/\bqbcore\/([\w\.]+).+microm/i,/micromessenger\/([\w\.]+)/i],[p,[u,"WeChat"]],[/konqueror\/([\w\.]+)/i],[p,[u,"Konqueror"]],[/trident.+rv[: ]([\w\.]{1,9})\b.+like gecko/i],[p,[u,"IE"]],[/ya(?:search)?browser\/([\w\.]+)/i],[p,[u,"Yandex"]],[/slbrowser\/([\w\.]+)/i],[p,[u,"Smart Lenovo Browser"]],[/(avast|avg)\/([\w\.]+)/i],[[u,/(.+)/,"$1 Secure Browser"],p],[/\bfocus\/([\w\.]+)/i],[p,[u,"Firefox Focus"]],[/\bopt\/([\w\.]+)/i],[p,[u,"Opera Touch"]],[/coc_coc\w+\/([\w\.]+)/i],[p,[u,"Coc Coc"]],[/dolfin\/([\w\.]+)/i],[p,[u,"Dolphin"]],[/coast\/([\w\.]+)/i],[p,[u,"Opera Coast"]],[/miuibrowser\/([\w\.]+)/i],[p,[u,"MIUI Browser"]],[/fxios\/([\w\.-]+)/i],[p,[u,"Mobile Firefox"]],[/\bqihoobrowser\/?([\w\.]*)/i],[p,[u,"360"]],[/\b(qq)\/([\w\.]+)/i],[[u,/(.+)/,"$1Browser"],p],[/(oculus|sailfish|huawei|vivo|pico)browser\/([\w\.]+)/i],[[u,/(.+)/,"$1 Browser"],p],[/samsungbrowser\/([\w\.]+)/i],[p,[u,"Samsung Internet"]],[/metasr[\/ ]?([\d\.]+)/i],[p,[u,"Sogou Explorer"]],[/(sogou)mo\w+\/([\d\.]+)/i],[[u,"Sogou Mobile"],p],[/(electron)\/([\w\.]+) safari/i,/(tesla)(?: qtcarbrowser|\/(20\d\d\.[-\w\.]+))/i,/m?(qqbrowser|2345(?=browser|chrome|explorer))\w*[\/ ]?v?([\w\.]+)/i],[u,p],[/(lbbrowser|rekonq)/i],[u],[/ome\/([\w\.]+) \w* ?(iron) saf/i,/ome\/([\w\.]+).+qihu (360)[es]e/i],[p,u],[/((?:fban\/fbios|fb_iab\/fb4a)(?!.+fbav)|;fbav\/([\w\.]+);)/i],[[u,ai],p,[h,O]],[/(Klarna)\/([\w\.]+)/i,/(kakao(?:talk|story))[\/ ]([\w\.]+)/i,/(naver)\(.*?(\d+\.[\w\.]+).*\)/i,/(daum)apps[\/ ]([\w\.]+)/i,/safari (line)\/([\w\.]+)/i,/\b(line)\/([\w\.]+)\/iab/i,/(alipay)client\/([\w\.]+)/i,/(twitter)(?:and| f.+e\/([\w\.]+))/i,/(instagram|snapchat)[\/ ]([-\w\.]+)/i],[u,p,[h,O]],[/\bgsa\/([\w\.]+) .*safari\//i],[p,[u,"GSA"],[h,O]],[/musical_ly(?:.+app_?version\/|_)([\w\.]+)/i],[p,[u,"TikTok"],[h,O]],[/\[(linkedin)app\]/i],[u,[h,O]],[/(chromium)[\/ ]([-\w\.]+)/i],[u,p],[/headlesschrome(?:\/([\w\.]+)| )/i],[p,[u,"Chrome Headless"]],[/ wv\).+(chrome)\/([\w\.]+)/i],[[u,"Chrome WebView"],p],[/droid.+ version\/([\w\.]+)\b.+(?:mobile safari|safari)/i],[p,[u,"Android Browser"]],[/chrome\/([\w\.]+) mobile/i],[p,[u,"Mobile Chrome"]],[/(chrome|omniweb|arora|[tizenoka]{5} ?browser)\/v?([\w\.]+)/i],[u,p],[/version\/([\w\.\,]+) .*mobile(?:\/\w+ | ?)safari/i],[p,[u,"Mobile Safari"]],[/iphone .*mobile(?:\/\w+ | ?)safari/i],[[u,"Mobile Safari"]],[/version\/([\w\.\,]+) .*(safari)/i],[p,u],[/webkit.+?(mobile ?safari|safari)(\/[\w\.]+)/i],[u,[p,"1"]],[/(webkit|khtml)\/([\w\.]+)/i],[u,p],[/(?:mobile|tablet);.*(firefox)\/([\w\.-]+)/i],[[u,"Mobile Firefox"],p],[/(navigator|netscape\d?)\/([-\w\.]+)/i],[[u,"Netscape"],p],[/(wolvic|librewolf)\/([\w\.]+)/i],[u,p],[/mobile vr; rv:([\w\.]+)\).+firefox/i],[p,[u,"Firefox Reality"]],[/ekiohf.+(flow)\/([\w\.]+)/i,/(swiftfox)/i,/(icedragon|iceweasel|camino|chimera|fennec|maemo browser|minimo|conkeror)[\/ ]?([\w\.\+]+)/i,/(seamonkey|k-meleon|icecat|iceape|firebird|phoenix|palemoon|basilisk|waterfox)\/([-\w\.]+)$/i,/(firefox)\/([\w\.]+)/i,/(mozilla)\/([\w\.]+) .+rv\:.+gecko\/\d+/i,/(amaya|dillo|doris|icab|ladybird|lynx|mosaic|netsurf|obigo|polaris|w3m|(?:go|ice|up)[\. ]?browser)[-\/ ]?v?([\w\.]+)/i,/\b(links) \(([\w\.]+)/i],[u,[p,/_/g,"."]],[/(cobalt)\/([\w\.]+)/i],[u,[p,/[^\d\.]+./,o]]],
+  cpu:[[/\b((amd|x|x86[-_]?|wow|win)64)\b/i],[[f,"amd64"]],[/(ia32(?=;))/i,/\b((i[346]|x)86)(pc)?\b/i],[[f,"ia32"]],[/\b(aarch64|arm(v?[89]e?l?|_?64))\b/i],[[f,"arm64"]],[/\b(arm(v[67])?ht?n?[fl]p?)\b/i],[[f,"armhf"]],[/( (ce|mobile); ppc;|\/[\w\.]+arm\b)/i],[[f,"arm"]],[/((ppc|powerpc)(64)?)( mac|;|\))/i],[[f,/ower/,o,hi]],[/ sun4\w[;\)]/i],[[f,"sparc"]],[/\b(avr32|ia64(?=;)|68k(?=\))|\barm(?=v([1-7]|[5-7]1)l?|;|eabi)|(irix|mips|sparc)(64)?\b|pa-risc)/i],[[f,hi]]],
+  device:[[/\b(sch-i[89]0\d|shw-m380s|sm-[ptx]\w{2,4}|gt-[pn]\d{2,4}|sgh-t8[56]9|nexus 10)/i],[g,[m,Q],[h,y]],[/\b((?:s[cgp]h|gt|sm)-(?![lr])\w+|sc[g-]?[\d]+a?|galaxy nexus)/i,/samsung[- ]((?!sm-[lr])[-\w]+)/i,/sec-(sgh\w+)/i],[g,[m,Q],[h,x]],[/(?:\/|\()(ip(?:hone|od)[\w, ]*)(?:\/|;)/i],[g,[m,I],[h,x]],[/\((ipad);[-\w\),; ]+apple/i,/applecoremedia\/[\w\.]+ \((ipad)/i,/\b(ipad)\d\d?,\d\d?[;\]].+ios/i],[g,[m,I],[h,y]],[/(macintosh);/i],[g,[m,I]],[/\b(sh-?[altvz]?\d\d[a-ekm]?)/i],[g,[m,Z],[h,x]],[/\b((?:brt|eln|hey2?|gdi|jdn)-a?[lnw]09|(?:ag[rm]3?|jdn2|kob2)-a?[lw]0[09]hn)(?: bui|\)|;)/i],[g,[m,D],[h,y]],[/honor([-\w ]+)[;\)]/i],[g,[m,D],[h,x]],[/\b((?:ag[rs][2356]?k?|bah[234]?|bg[2o]|bt[kv]|cmr|cpn|db[ry]2?|jdn2|got|kob2?k?|mon|pce|scm|sht?|[tw]gr|vrd)-[ad]?[lw][0125][09]b?|605hw|bg2-u03|(?:gem|fdr|m2|ple|t1)-[7a]0[1-4][lu]|t1-a2[13][lw]|mediapad[\w\. ]*(?= bui|\)))\b(?!.+d\/s)/i],[g,[m,V],[h,y]],[/(?:huawei)([-\w ]+)[;\)]/i,/\b(nexus 6p|\w{2,4}e?-[atu]?[ln][\dx][012359c][adn]?)\b(?!.+d\/s)/i],[g,[m,V],[h,x]],[/oid[^\)]+; (2[\dbc]{4}(182|283|rp\w{2})[cgl]|m2105k81a?c)(?: bui|\))/i,/\b((?:red)?mi[-_ ]?pad[\w- ]*)(?: bui|\))/i],[[g,/_/g," "],[m,ii],[h,y]],[/\b(poco[\w ]+|m2\d{3}j\d\d[a-z]{2})(?: bui|\))/i,/\b; (\w+) build\/hm\1/i,/\b(hm[-_ ]?note?[_ ]?(?:\d\w)?) bui/i,/\b(redmi[\-_ ]?(?:note|k)?[\w_ ]+)(?: bui|\))/i,/oid[^\)]+; (m?[12][0-389][01]\w{3,6}[c-y])( bui|; wv|\))/i,/\b(mi[-_ ]?(?:a\d|one|one[_ ]plus|note lte|max|cc)?[_ ]?(?:\d?\w?)[_ ]?(?:plus|se|lite|pro)?)(?: bui|\))/i,/ ([\w ]+) miui\/v?\d/i],[[g,/_/g," "],[m,ii],[h,x]],[/; (\w+) bui.+ oppo/i,/\b(cph[12]\d{3}|p(?:af|c[al]|d\w|e[ar])[mt]\d0|x9007|a101op)\b/i],[g,[m,K],[h,x]],[/\b(opd2(\d{3}a?))(?: bui|\))/i],[g,[m,xi,{
+  OnePlus:["304","403","203"],"*":K
+  }],[h,y]],[/(vivo (5r?|6|8l?|go|one|s|x[il]?[2-4]?)[\w\+ ]*)(?: bui|\))/i],[g,[m,"BLU"],[h,x]],[/; vivo (\w+)(?: bui|\))/i,/\b(v[12]\d{3}\w?[at])(?: bui|;)/i],[g,[m,"Vivo"],[h,x]],[/\b(rmx[1-3]\d{3})(?: bui|;|\))/i],[g,[m,"Realme"],[h,x]],[/\b(milestone|droid(?:[2-4x]| (?:bionic|x2|pro|razr))?:?( 4g)?)\b[\w ]+build\//i,/\bmot(?:orola)?[- ](\w*)/i,/((?:moto(?! 360)[\w\(\) ]+|xt\d{3,4}|nexus 6)(?= bui|\)))/i],[g,[m,W],[h,x]],[/\b(mz60\d|xoom[2 ]{0,2}) build\//i],[g,[m,W],[h,y]],[/((?=lg)?[vl]k\-?\d{3}) bui| 3\.[-\w; ]{10}lg?-([06cv9]{3,4})/i],[g,[m,G],[h,y]],[/(lm(?:-?f100[nv]?|-[\w\.]+)(?= bui|\))|nexus [45])/i,/\blg[-e;\/ ]+(?!.*(?:browser|netcast|android tv|watch))(\w+)/i,/\blg-?([\d\w]+) bui/i],[g,[m,G],[h,x]],[/(ideatab[-\w ]+|602lv|d-42a|a101lv|a2109a|a3500-hv|s[56]000|pb-6505[my]|tb-?x?\d{3,4}(?:f[cu]|xu|[av])|yt\d?-[jx]?\d+[lfmx])( bui|;|\)|\/)/i,/lenovo ?(b[68]0[08]0-?[hf]?|tab(?:[\w- ]+?)|tb[\w-]{6,7})( bui|;|\)|\/)/i],[g,[m,L],[h,y]],[/(nokia) (t[12][01])/i],[m,g,[h,y]],[/(?:maemo|nokia).*(n900|lumia \d+|rm-\d+)/i,/nokia[-_ ]?(([-\w\. ]*))/i],[[g,/_/g," "],[h,x],[m,"Nokia"]],[/(pixel (c|tablet))\b/i],[g,[m,R],[h,y]],[/droid.+; (pixel[\daxl ]{0,6})(?: bui|\))/i],[g,[m,R],[h,x]],[/droid.+; (a?\d[0-2]{2}so|[c-g]\d{4}|so[-gl]\w+|xq-a\w[4-7][12])(?= bui|\).+chrome\/(?![1-6]{0,1}\d\.))/i],[g,[m,J],[h,x]],[/sony tablet [ps]/i,/\b(?:sony)?sgp\w+(?: bui|\))/i],[[g,"Xperia Tablet"],[m,J],[h,y]],[/ (kb2005|in20[12]5|be20[12][59])\b/i,/(?:one)?(?:plus)? (a\d0\d\d)(?: b|\))/i],[g,[m,Y],[h,x]],[/(alexa)webm/i,/(kf[a-z]{2}wi|aeo(?!bc)\w\w)( bui|\))/i,/(kf[a-z]+)( bui|\)).+silk\//i],[g,[m,F],[h,y]],[/((?:sd|kf)[0349hijorstuw]+)( bui|\)).+silk\//i],[[g,/(.+)/g,"Fire Phone $1"],[m,F],[h,x]],[/(playbook);[-\w\),; ]+(rim)/i],[g,m,[h,y]],[/\b((?:bb[a-f]|st[hv])100-\d)/i,/\(bb10; (\w+)/i],[g,[m,P],[h,x]],[/(?:\b|asus_)(transfo[prime ]{4,10} \w+|eeepc|slider \w+|nexus 7|padfone|p00[cj])/i],[g,[m,E],[h,y]],[/ (z[bes]6[027][012][km][ls]|zenfone \d\w?)\b/i],[g,[m,E],[h,x]],[/(nexus 9)/i],[g,[m,"HTC"],[h,y]],[/(htc)[-;_ ]{1,2}([\w ]+(?=\)| bui)|\w+)/i,/(zte)[- ]([\w ]+?)(?: bui|\/|\))/i,/(alcatel|geeksphone|nexian|panasonic(?!(?:;|\.))|sony(?!-bra))[-_ ]?([-\w]*)/i],[m,[g,/_/g," "],[h,x]],[/tcl (xess p17aa)/i,/droid [\w\.]+; ((?:8[14]9[16]|9(?:0(?:48|60|8[01])|1(?:3[27]|66)|2(?:6[69]|9[56])|466))[gqswx])(_\w(\w|\w\w))?(\)| bui)/i],[g,[m,"TCL"],[h,y]],[/droid [\w\.]+; (418(?:7d|8v)|5087z|5102l|61(?:02[dh]|25[adfh]|27[ai]|56[dh]|59k|65[ah])|a509dl|t(?:43(?:0w|1[adepqu])|50(?:6d|7[adju])|6(?:09dl|10k|12b|71[efho]|76[hjk])|7(?:66[ahju]|67[hw]|7[045][bh]|71[hk]|73o|76[ho]|79w|81[hks]?|82h|90[bhsy]|99b)|810[hs]))(_\w(\w|\w\w))?(\)| bui)/i],[g,[m,"TCL"],[h,x]],[/(itel) ((\w+))/i],[[m,hi],g,[h,xi,{
+  tablet:["p10001l","w7001"],"*":"mobile"
+  }]],[/droid.+; ([ab][1-7]-?[0178a]\d\d?)/i],[g,[m,"Acer"],[h,y]],[/droid.+; (m[1-5] note) bui/i,/\bmz-([-\w]{2,})/i],[g,[m,"Meizu"],[h,x]],[/; ((?:power )?armor(?:[\w ]{0,8}))(?: bui|\))/i],[g,[m,"Ulefone"],[h,x]],[/; (energy ?\w+)(?: bui|\))/i,/; energizer ([\w ]+)(?: bui|\))/i],[g,[m,"Energizer"],[h,x]],[/; cat (b35);/i,/; (b15q?|s22 flip|s48c|s62 pro)(?: bui|\))/i],[g,[m,"Cat"],[h,x]],[/((?:new )?andromax[\w- ]+)(?: bui|\))/i],[g,[m,"Smartfren"],[h,x]],[/droid.+; (a(?:015|06[35]|142p?))/i],[g,[m,"Nothing"],[h,x]],[/; (x67 5g|tikeasy \w+|ac[1789]\d\w+)( b|\))/i,/archos ?(5|gamepad2?|([\w ]*[t1789]|hello) ?\d+[\w ]*)( b|\))/i],[g,[m,"Archos"],[h,y]],[/archos ([\w ]+)( b|\))/i,/; (ac[3-6]\d\w{2,8})( b|\))/i],[g,[m,"Archos"],[h,x]],[/(imo) (tab \w+)/i,/(infinix) (x1101b?)/i],[m,g,[h,y]],[/(blackberry|benq|palm(?=\-)|sonyericsson|acer|asus(?! zenw)|dell|jolla|meizu|motorola|polytron|infinix|tecno|micromax|advan)[-_ ]?([-\w]*)/i,/; (blu|hmd|imo|tcl)[_ ]([\w\+ ]+?)(?: bui|\)|; r)/i,/(hp) ([\w ]+\w)/i,/(microsoft); (lumia[\w ]+)/i,/(lenovo)[-_ ]?([-\w ]+?)(?: bui|\)|\/)/i,/(oppo) ?([\w ]+) bui/i],[m,g,[h,x]],[/(kobo)\s(ereader|touch)/i,/(hp).+(touchpad(?!.+tablet)|tablet)/i,/(kindle)\/([\w\.]+)/i],[m,g,[h,y]],[/(surface duo)/i],[g,[m,$],[h,y]],[/droid [\d\.]+; (fp\du?)(?: b|\))/i],[g,[m,"Fairphone"],[h,x]],[/((?:tegranote|shield t(?!.+d tv))[\w- ]*?)(?: b|\))/i],[g,[m,X],[h,y]],[/(sprint) (\w+)/i],[m,g,[h,x]],[/(kin\.[onetw]{3})/i],[[g,/\./g," "],[m,$],[h,x]],[/droid.+; ([c6]+|et5[16]|mc[239][23]x?|vc8[03]x?)\)/i],[g,[m,ei],[h,y]],[/droid.+; (ec30|ps20|tc[2-8]\d[kx])\)/i],[g,[m,ei],[h,x]],[/smart-tv.+(samsung)/i],[m,[h,C]],[/hbbtv.+maple;(\d+)/i],[[g,/^/,"SmartTV"],[m,Q],[h,C]],[/tcast.+(lg)e?. ([-\w]+)/i],[m,g,[h,C]],[/(nux; netcast.+smarttv|lg (netcast\.tv-201\d|android tv))/i],[[m,G],[h,C]],[/(apple) ?tv/i],[m,[g,"Apple TV"],[h,C]],[/crkey.*devicetype\/chromecast/i],[[g,"Chromecast Third Generation"],[m,R],[h,C]],[/crkey.*devicetype\/([^/]*)/i],[[g,/^/,"Chromecast "],[m,R],[h,C]],[/fuchsia.*crkey/i],[[g,"Chromecast Nest Hub"],[m,R],[h,C]],[/crkey/i],[[g,ri],[m,R],[h,C]],[/(portaltv)/i],[g,[m,ai],[h,C]],[/droid.+aft(\w+)( bui|\))/i],[g,[m,F],[h,C]],[/(shield \w+ tv)/i],[g,[m,X],[h,C]],[/\(dtv[\);].+(aquos)/i,/(aquos-tv[\w ]+)\)/i],[g,[m,Z],[h,C]],[/(bravia[\w ]+)( bui|\))/i],[g,[m,J],[h,C]],[/(mi(tv|box)-?\w+) bui/i],[g,[m,ii],[h,C]],[/Hbbtv.*(technisat) (.*);/i],[m,g,[h,C]],[/\b(roku)[\dx]*[\)\/]((?:dvp-)?[\d\.]*)/i,/hbbtv\/\d+\.\d+\.\d+ +\([\w\+ ]*; *([\w\d][^;]*);([^;]*)/i],[[m,gi],[g,gi],[h,C]],[/droid.+; ([\w- ]+) (?:android tv|smart[- ]?tv)/i],[g,[h,C]],[/\b(android tv|smart[- ]?tv|opera tv|tv; rv:)\b/i],[[h,C]],[/(ouya)/i,/(nintendo) (\w+)/i],[m,g,[h,k]],[/droid.+; (shield)( bui|\))/i],[g,[m,X],[h,k]],[/(playstation \w+)/i],[g,[m,J],[h,k]],[/\b(xbox(?: one)?(?!; xbox))[\); ]/i],[g,[m,$],[h,k]],[/\b(sm-[lr]\d\d[0156][fnuw]?s?|gear live)\b/i],[g,[m,Q],[h,T]],[/((pebble))app/i,/(asus|google|lg|oppo) ((pixel |zen)?watch[\w ]*)( bui|\))/i],[m,g,[h,T]],[/(ow(?:19|20)?we?[1-3]{1,3})/i],[g,[m,K],[h,T]],[/(watch)(?: ?os[,\/]|\d,\d\/)[\d\.]+/i],[g,[m,I],[h,T]],[/(opwwe\d{3})/i],[g,[m,Y],[h,T]],[/(moto 360)/i],[g,[m,W],[h,T]],[/(smartwatch 3)/i],[g,[m,J],[h,T]],[/(g watch r)/i],[g,[m,G],[h,T]],[/droid.+; (wt63?0{2,3})\)/i],[g,[m,ei],[h,T]],[/droid.+; (glass) \d/i],[g,[m,R],[h,S]],[/(pico) (4|neo3(?: link|pro)?)/i],[m,g,[h,S]],[/(quest( \d| pro)?s?).+vr/i],[g,[m,ai],[h,S]],[/(tesla)(?: qtcarbrowser|\/[-\w\.]+)/i],[m,[h,_]],[/(aeobc)\b/i],[g,[m,F],[h,_]],[/(homepod).+mac os/i],[g,[m,I],[h,_]],[/windows iot/i],[[h,_]],[/droid .+?; ([^;]+?)(?: bui|; wv\)|\) applew).+?(mobile|vr|\d) safari/i],[g,[h,xi,{
+  mobile:"Mobile",xr:"VR","*":y
+  }]],[/\b((tablet|tab)[;\/]|focus\/\d(?!.+mobile))/i],[[h,y]],[/(phone|mobile(?:[;\/]| [ \w\/\.]*safari)|pda(?=.+windows ce))/i],[[h,x]],[/droid .+?; ([\w\. -]+)( bui|\))/i],[g,[m,"Generic"]]],
+  engine:[[/windows.+ edge\/([\w\.]+)/i],[p,[u,"EdgeHTML"]],[/(arkweb)\/([\w\.]+)/i],[u,p],[/webkit\/537\.36.+chrome\/(?!27)([\w\.]+)/i],[p,[u,"Blink"]],[/(presto)\/([\w\.]+)/i,/(webkit|trident|netfront|netsurf|amaya|lynx|w3m|goanna|servo)\/([\w\.]+)/i,/ekioh(flow)\/([\w\.]+)/i,/(khtml|tasman|links)[\/ ]\(?([\w\.]+)/i,/(icab)[\/ ]([23]\.[\d\.]+)/i,/\b(libweb)/i],[u,p],[/ladybird\//i],[[u,"LibWeb"]],[/rv\:([\w\.]{1,9})\b.+(gecko)/i],[p,u]],
+  os:[[/microsoft (windows) (vista|xp)/i],[u,p],[/(windows (?:phone(?: os)?|mobile|iot))[\/ ]?([\d\.\w ]*)/i],[u,[p,xi,yi]],[/windows nt 6\.2; (arm)/i,/windows[\/ ]([ntce\d\. ]+\w)(?!.+xbox)/i,/(?:win(?=3|9|n)|win 9x )([nt\d\.]+)/i],[[p,xi,yi],[u,si]],[/[adehimnop]{4,7}\b(?:.*os ([\w]+) like mac|; opera)/i,/(?:ios;fbsv\/|iphone.+ios[\/ ])([\d\.]+)/i,/cfnetwork\/.+darwin/i],[[p,/_/g,"."],[u,"iOS"]],[/(mac os x) ?([\w\. ]*)/i,/(macintosh|mac_powerpc\b)(?!.+haiku)/i],[[u,"macOS"],[p,/_/g,"."]],[/android ([\d\.]+).*crkey/i],[p,[u,"Chromecast Android"]],[/fuchsia.*crkey\/([\d\.]+)/i],[p,[u,"Chromecast Fuchsia"]],[/crkey\/([\d\.]+).*devicetype\/smartspeaker/i],[p,[u,"Chromecast SmartSpeaker"]],[/linux.*crkey\/([\d\.]+)/i],[p,[u,"Chromecast Linux"]],[/crkey\/([\d\.]+)/i],[p,[u,ri]],[/droid ([\w\.]+)\b.+(android[- ]x86|harmonyos)/i],[p,u],[/(ubuntu) ([\w\.]+) like android/i],[[u,/(.+)/,"$1 Touch"],p],[/(android|bada|blackberry|kaios|maemo|meego|openharmony|qnx|rim tablet os|sailfish|series40|symbian|tizen|webos)\w*[-\/\.; ]?([\d\.]*)/i],[u,p],[/\(bb(10);/i],[p,[u,P]],[/(?:symbian ?os|symbos|s60(?=;)|series ?60)[-\/ ]?([\w\.]*)/i],[p,[u,"Symbian"]],[/mozilla\/[\d\.]+ \((?:mobile|tablet|tv|mobile; [\w ]+); rv:.+ gecko\/([\w\.]+)/i],[p,[u,"Firefox OS"]],[/web0s;.+rt(tv)/i,/\b(?:hp)?wos(?:browser)?\/([\w\.]+)/i],[p,[u,"webOS"]],[/watch(?: ?os[,\/]|\d,\d\/)([\d\.]+)/i],[p,[u,"watchOS"]],[/(cros) [\w]+(?:\)| ([\w\.]+)\b)/i],[[u,"Chrome OS"],p],[/panasonic;(viera)/i,/(netrange)mmh/i,/(nettv)\/(\d+\.[\w\.]+)/i,/(nintendo|playstation) (\w+)/i,/(xbox); +xbox ([^\);]+)/i,/(pico) .+os([\w\.]+)/i,/\b(joli|palm)\b ?(?:os)?\/?([\w\.]*)/i,/(mint)[\/\(\) ]?(\w*)/i,/(mageia|vectorlinux)[; ]/i,/([kxln]?ubuntu|debian|suse|opensuse|gentoo|arch(?= linux)|slackware|fedora|mandriva|centos|pclinuxos|red ?hat|zenwalk|linpus|raspbian|plan 9|minix|risc os|contiki|deepin|manjaro|elementary os|sabayon|linspire)(?: gnu\/linux)?(?: enterprise)?(?:[- ]linux)?(?:-gnu)?[-\/ ]?(?!chrom|package)([-\w\.]*)/i,/(hurd|linux)(?: arm\w*| x86\w*| ?)([\w\.]*)/i,/(gnu) ?([\w\.]*)/i,/\b([-frentopcghs]{0,5}bsd|dragonfly)[\/ ]?(?!amd|[ix346]{1,2}86)([\w\.]*)/i,/(haiku) (\w+)/i],[u,p],[/(sunos) ?([\w\.\d]*)/i],[[u,"Solaris"],p],[/((?:open)?solaris)[-\/ ]?([\w\.]*)/i,/(aix) ((\d)(?=\.|\)| )[\w\.])*/i,/\b(beos|os\/2|amigaos|morphos|openvms|fuchsia|hp-ux|serenityos)/i,/(unix) ?([\w\.]*)/i],[u,p]]
+  },Si=(pi.call((i={init:{},isIgnore:{},isIgnoreRgx:{},toString:{}
+  }).init,[[n,[u,p,v,h]],[w,[f]],[b,[h,g,m]],[d,[u,p]],[c,[u,p]]]),pi.call(i.isIgnore,[[n,[p,v]],[d,[p]],[c,[p]]]),
+  pi.call(i.isIgnoreRgx,[[n,/ ?browser$/i],[c,/ ?os$/i]]),
+  pi.call(i.toString,[[n,[u,p]],[w,[f]],[b,[m,g]],[d,[u,p]],[c,[u,p]]]),i),_i=function(i,e){
+  var r=Si.init[e],a=Si.isIgnore[e]||0,s=Si.isIgnoreRgx[e]||0,n=Si.toString[e]||0;function w(){pi.call(this,r)}
+  return w.prototype.getItem=function(){return i},w.prototype.withClientHints=function(){
+  return wi?wi.getHighEntropyValues(N).then((function(e){return i.setCH(new Oi(e,!1)).parseCH().get()})):i.parseCH().get()
+  },w.prototype.withFeatureCheck=function(){return i.detectFeature().get()},e!=l&&(w.prototype.is=function(i){var e=!1
+  ;for(var o in this)if(this.hasOwnProperty(o)&&!di(a,o)&&hi(s?fi(s,this[o]):this[o])==hi(s?fi(s,i):i)){if(e=!0,i!=t)break
+  }else if(i==t&&e){e=!e;break}return e},w.prototype.toString=function(){var i=o
+  ;for(var e in n)typeof this[n[e]]!==t&&(i+=(i?" ":o)+this[n[e]]);return i||t}),wi||(w.prototype.then=function(i){
+  var e=this,o=function(){for(var i in e)e.hasOwnProperty(i)&&(this[i]=e[i])};o.prototype={is:w.prototype.is,
+  toString:w.prototype.toString};var r=new o;return i(r),r}),new w};function Oi(i,e){if(i=i||{},pi.call(this,N),
+  e)pi.call(this,[[q,ui(i[H])],[z,ui(i["sec-ch-ua-full-version-list"])],[x,/\?1/.test(i["sec-ch-ua-mobile"])],[g,vi(i["sec-ch-ua-model"])],[j,vi(i[U])],[A,vi(i["sec-ch-ua-platform-version"])],[f,vi(i["sec-ch-ua-arch"])],[M,ui(i["sec-ch-ua-form-factors"])],[B,vi(i["sec-ch-ua-bitness"])]]);else for(var o in i)this.hasOwnProperty(o)&&typeof i[o]!==t&&(this[o]=i[o])
+  }function qi(i,e,o,a){return this.get=function(i){return i?this.data.hasOwnProperty(i)?this.data[i]:void 0:this.data},
+  this.set=function(i,e){return this.data[i]=e,this},this.setCH=function(i){return this.uaCH=i,this},
+  this.detectFeature=function(){if(ni&&ni.userAgent==this.ua)switch(this.itemType){case n:
+  ni.brave&&typeof ni.brave.isBrave==r&&this.set(u,"Brave");break;case b:!this.get(h)&&wi&&wi.mobile&&this.set(h,x),
+  "Macintosh"==this.get(g)&&ni&&typeof ni.standalone!==t&&ni.maxTouchPoints&&ni.maxTouchPoints>2&&this.set(g,"iPad").set(h,y)
+  ;break;case c:!this.get(u)&&wi&&wi.platform&&this.set(u,wi.platform);break;case l:var i=this.data,e=function(e){
+  return i[e].getItem().detectFeature().get()};this.set(n,e(n)).set(w,e(w)).set(b,e(b)).set(d,e(d)).set(c,e(c))}
+  return this},this.parseUA=function(){return this.itemType!=l&&ki.call(this.data,this.ua,this.rgxMap),
+  this.itemType==n&&this.set(v,mi(this.get(p))),this},this.parseCH=function(){var i=this.uaCH,e=this.rgxMap
+  ;switch(this.itemType){case n:case d:var o,r=i[z]||i.brands;if(r)for(var t in r){var a=r[t].brand||r[t],s=r[t].version
+  ;this.itemType!=n||/not.a.brand/i.test(a)||o&&(!/chrom/i.test(o)||a==oi)||(a=xi(a,{Chrome:"Google Chrome",
+  Edge:"Microsoft Edge","Chrome WebView":"Android WebView","Chrome Headless":"HeadlessChrome",
+  "Huawei Browser":"HuaweiBrowser","MIUI Browser":"Miui Browser","Opera Mobi":"OperaMobile",Yandex:"YaBrowser"}),
+  this.set(u,a).set(p,s).set(v,mi(s)),o=a),this.itemType==d&&a==oi&&this.set(p,s)}break;case w:var f=i.architecture
+  ;f&&(f&&"64"==i.bitness&&(f+="64"),ki.call(this.data,f+";",e));break;case b:if(i.mobile&&this.set(h,x),
+  i.model&&(this.set(g,i.model),!this.get(h)||!this.get(m))){var k={};ki.call(k,"droid 9; "+i.model+")",e),
+  !this.get(h)&&k.type&&this.set(h,k.type),!this.get(m)&&k.vendor&&this.set(m,k.vendor)}if(i.formFactors){var y
+  ;if("string"!=typeof i.formFactors)for(var C=0;!y&&C<i.formFactors.length;)y=xi(i.formFactors[C++],Ci);else y=xi(i.formFactors,Ci)
+  ;this.set(h,y)}break;case c:var T=i.platform;if(T){var S=i[A];T==si&&(S=parseInt(mi(S),10)>=13?"11":"10"),
+  this.set(u,T).set(p,S)}this.get(u)==si&&"Xbox"==i.model&&this.set(u,"Xbox").set(p,void 0);break;case l:
+  var _=this.data,O=function(e){return _[e].getItem().setCH(i).parseCH().get()}
+  ;this.set(n,O(n)).set(w,O(w)).set(b,O(b)).set(d,O(d)).set(c,O(c))}return this
+  },pi.call(this,[["itemType",i],["ua",e],["uaCH",a],["rgxMap",o],["data",_i(this,i)]]),this}function Mi(i,t,u){
+  if(typeof i===a?(ci(i,!0)?(typeof t===a&&(u=t),t=i):(u=i,t=void 0),i=void 0):typeof i!==s||ci(t,!0)||(u=t,t=void 0),
+  u&&typeof u.append===r){var h={};u.forEach((function(i,e){h[e]=i})),u=h}
+  if(!(this instanceof Mi))return new Mi(i,t,u).getResult()
+  ;var m=typeof i===s?i:u&&u[e]?u[e]:ni&&ni.userAgent?ni.userAgent:o,p=new Oi(u,!0),f=t?function(i,e){var o={},r=e
+  ;if(!ci(e))for(var t in r={},e)for(var a in e[t])r[a]=e[t][a].concat(r[a]?r[a]:[])
+  ;for(var s in i)o[s]=r[s]&&r[s].length%2==0?r[s].concat(i[s]):i[s];return o}(Ti,t):Ti,v=function(i){
+  return i==l?function(){
+  return new qi(i,m,f,p).set("ua",m).set(n,this.getBrowser()).set(w,this.getCPU()).set(b,this.getDevice()).set(d,this.getEngine()).set(c,this.getOS()).get()
+  }:function(){return new qi(i,m,f[i],p).parseUA().get()}}
+  ;return pi.call(this,[["getBrowser",v(n)],["getCPU",v(w)],["getDevice",v(b)],["getEngine",v(d)],["getOS",v(c)],["getResult",v(l)],["getUA",function(){
+  return m}],["setUA",function(i){return li(i)&&(m=i.length>500?gi(i,500):i),this}]]).setUA(m),this}Mi.VERSION="2.0.3",
+  Mi.BROWSER=bi([u,p,v,h]),Mi.CPU=bi([f]),Mi.DEVICE=bi([g,m,h,k,x,C,y,T,_]),Mi.ENGINE=Mi.OS=bi([u,p]);var zi=Mi(),ji={
+  name:zi.engine.name||"",version:zi.engine.version||"",major:mi(zi.engine.version)||""}
+  ;"Blink"===ji.name&&(ji.name="Chrome");var Ai=ji.name?{name:ji.name,version:ji.version,major:ji.major}:{
+  name:zi.browser.name||"Unknown",version:zi.browser.version||"",major:mi(zi.browser.version)||""},Bi={device:{
+  type:(zi.device.type||"Unknown").toUpperCase(),vendor:zi.device.vendor||"Unknown",model:zi.device.model||"Unknown"},os:{
+  name:zi.os.name||"Unknown",version:zi.os.version||"",major:mi(zi.os.version)||""},browser:Ai};head("agent",Bi)}();
+  </script>
+
+  <script>
+    // vanilla.js/lodash/handlerbars.js
+    function $tpl(tpl, locals, filters) {
+      filters = filters || {};
+      
+      return tpl.replace(/{{\s*(\w+)(?:\s*\|\s*(\w+))?\s*}}/g,
+        function(match, key, filterName) {
+          var value = locals[key] !== undefined ? locals[key] : "";
+          if (filterName && filters[filterName]) {
+            value = filters[filterName](value);
+          }
+          return value;
+        });
+    }
+
+    // vanilla.js/jquery/html.js
+    function $html(selector, html) {
+      // The selector should return ONE and only ONE element
+      var el = document.querySelector(selector);
+      el.innerHTML = html;
+      return el;
+    };
+
+    var TPL = '<li class="{{ klass }}">{{ feature }}</li>';
+
+    var useragent = [];
+    useragent.push($tpl(TPL, { feature: navigator.userAgent, klass: '' }));
+    useragent.push($tpl(TPL, { feature: 'device: ' + head.agent.device.type, klass: '' }));
+    useragent.push($tpl(TPL, { feature: 'os: ' + head.agent.os.name + '@' + head.agent.os.major, klass: '' }));
+    useragent.push($tpl(TPL, { feature: 'browser: ' + head.agent.browser.name + '@' + head.agent.browser.major, klass: '' }));
+    $html('.js-useragent', useragent.join(''));
+
+    var BASELINE = {
+      'es6/promieses': 'promises',
+      'es6/arrow': 'arrow',
+      'es6/rest-parameters': 'restparameters',
+      'es6/spread-array': 'spreadarray',
+    };
+
+    var f1;
+    var baseline = [];
+    for (f1 in BASELINE) {
+      baseline.push($tpl(TPL, { feature: f1, klass: Modernizr[BASELINE[f1]] ? '': 'feature-failed' }));
+    }
+    $html('.js-baseline', baseline.join(''));
+
+    var OPTIMISTIC = {
+      'es7/spread-object': 'spreadobject'
+    };
+
+    var f2;
+    var optimistic = [];
+    for (f2 in OPTIMISTIC) {
+      optimistic.push($tpl(TPL, { feature: f2, klass: Modernizr[OPTIMISTIC[f2]] ? '': 'feature-failed' }));
+    }
+    $html('.js-optimistic', optimistic.join(''));
+  </script>
+
+  <script>
+  /* @head.js/analytics-pv 0.0.1 */
+  (function(){function _noop(){}function _post(url,body){var headers=new Headers({
+  "Content-Type":"text/plain;charset=UTF-8"});var req={method:"POST",headers:headers,body:body}
+  ;return new Promise((function(){fetch(url,req).then(_noop).catch(_noop)}))}function _uuid(placeholder){
+  return placeholder?(parseInt(placeholder,10)^Math.random()*16>>parseInt(placeholder,10)/4).toString(16):"".concat(1e7,"-").concat(1e3,"-").concat(4e3,"-").concat(8e3,"-").concat(1e11).replace(/[018]/g,_uuid)
+  }function _template(tpl,locals){var fn=new Function("_","return `"+tpl+"`;");return fn(locals)}
+  var endpoint="https://rum-openway.guance.com/v1/write/rum?token=2OQwyC4AulthZZNx7lwSRLAZpOaqbyC26ATF0pYdC34y7MP31A&to_headless=true&precision=ms"
+  ;var GUANCE='view,sdk_name=df_web_rum_sdk,sdk_version=3.2.24,app_id=${_.a},env=${_.p},service=browser,version=${_.r},source=browser,userid=${_.u},os=${_.o},os_version_major=${_.om},browser=${_.b},browser_version_major=${_.bm},device=${_.d},view_id=${_.v},view_url=${_.l},view_path=${_.t},view_loading_type=initial_load view_url_query="{}",drift=0 '
+  ;var VIEW={a:"de",p:"prd",r:"0.0.1",u:_uuid(),v:_uuid(),l:"https://cdn.lisitede.com/modernizr-aee143-002.html",
+  t:"/modernizr-aee143-002.html",d:head.agent.device.type,o:head.agent.os.name,om:head.agent.os.major,b:head.agent.browser.name,
+  bm:head.agent.browser.major};var body=_template(GUANCE,VIEW)+Date.now();_post(endpoint,body)})();
+  </script>
+</body>
+</html>

@@ -3,10 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
-import { name, version } from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 
-const banner = `/* ${name} ${version} */`;
+const banner = `/* ${pkg.name} ${pkg.version} */`;
 
 
 export default [
@@ -40,6 +40,6 @@ export default [
       }),
     ],
 
-    output: { dir: '../snippet', entryFileNames: 'init-[hash].js', format: 'iife', name: 'head', exports: 'default', banner },
+    output: { dir: '../snippet', entryFileNames: 'init-[hash:6].js', format: 'iife', strict: false, name: 'head', exports: 'default', banner },
   },
 ];

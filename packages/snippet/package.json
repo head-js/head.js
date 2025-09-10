@@ -1,6 +1,6 @@
 {
   "name": "@head.js/snippet",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "@head.js/snippet-*",
   "main": "index.js",
   "author": "Albert Hbrls<shuaizhexu@gmail.com>",

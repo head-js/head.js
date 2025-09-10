@@ -3,10 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
-import { name, version } from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 
-const banner = `/* ${name} ${version} */`;
+const banner = `/* ${pkg.name} ${pkg.version} */`;
 
 
 export default [
@@ -14,7 +14,6 @@ export default [
     input: 'src/index.js',
 
     external: [
-      'core-js/modules/es.array.splice.js',
     ],
 
     plugins: [
@@ -41,6 +40,6 @@ export default [
       }),
     ],
 
-    output: { dir: '../snippet', entryFileNames: 'emitter-[hash].js', format: 'iife', name: 'head.emitter', exports: 'default', banner },
+    output: { dir: '../snippet', entryFileNames: 'emitter-[hash:6].js', format: 'iife', strict: false, name: 'head.emitter', exports: 'default', banner },
   },
 ];

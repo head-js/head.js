@@ -111,11 +111,11 @@ Bridge.prototype.ready = function (n) {
         console.warn(`only the 1st ${name}@${Object.keys(this.initialized[name]).join(',')} will register and resolve.`);
         return _;
       } else {
-        throw new Error('check docs about `await bridge.initialize`');
+        throw new Error('check docs about ~await bridge.initialize~');
       }
     }
   } else {
-    throw new Error('check docs about `await bridge.initialize`');
+    throw new Error('check docs about ~await bridge.initialize~');
   }
 };
 

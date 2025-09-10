@@ -1,3 +1,3 @@
-const head = {};
+const head = window.head || {};
 
 export default head;

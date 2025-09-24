@@ -1,0 +1,3 @@
+src/getBaseSystemInfo.ts
+src/getBrowserInfo.ts
+src/ua-parser-js/

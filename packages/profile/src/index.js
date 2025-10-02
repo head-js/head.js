@@ -1,3 +1,3 @@
 const profile = '{{ __profile_vars__ }}';
 
-export default profile;
+head('profile', profile); // eslint-disable-line no-undef

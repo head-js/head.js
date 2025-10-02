@@ -40,6 +40,39 @@ export default [
       }),
     ],
 
-    output: { dir: '../snippet', entryFileNames: 'init-[hash:6].js', format: 'iife', strict: false, name: 'head', exports: 'default', banner },
+    output: { dir: '../snippet', entryFileNames: 'init-[hash:6].js', format: 'iife', strict: false, exports: 'none', banner },
+  },
+  {
+    input: 'src/hlobal.js',
+
+    external: [
+      'core-js/modules/esnext.global-this.js',
+    ],
+
+    plugins: [
+      eslint(),
+
+      commonjs({
+        sourceMap: false,
+      }),
+
+      resolve({
+        browser: true,
+      }),
+
+      babel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'bundled',
+      }),
+
+      terser({
+        format: {
+          max_line_len: 120,
+          preamble: banner,
+        },
+      }),
+    ],
+
+    output: { dir: '../snippet', entryFileNames: 'hlobal-[hash:6].js', format: 'iife', strict: false, name: '__hlobal__', exports: 'default', banner },
   },
 ];

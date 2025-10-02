@@ -14,6 +14,7 @@ export default [
     input: 'src/index.js',
 
     external: [
+      'head',
     ],
 
     plugins: [
@@ -40,6 +41,6 @@ export default [
       }),
     ],
 
-    output: { dir: '../snippet', entryFileNames: 'profile-[hash:6].js', format: 'iife', strict: false, name: 'head.profile', exports: 'default', banner },
+    output: { dir: '../snippet', entryFileNames: 'profile-[hash:6].js', format: 'iife', strict: false, globals: { head: 'head' }, exports: 'none', banner },
   },
 ];

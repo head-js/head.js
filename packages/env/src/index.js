@@ -6,4 +6,4 @@ env.version = '{{ __version__ }}';
 env.agent = '{{ __agent__ }}';
 env.context = '{{ __context__ }}';
 
-export default env;
+head('env', env); // eslint-disable-line no-undef

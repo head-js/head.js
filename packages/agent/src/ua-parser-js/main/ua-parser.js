@@ -145,13 +145,13 @@
             }
             return mergedRgx;
         },
-        enumerize = function (arr) {
-            var enums = {};
-            for (var i=0; i<arr.length; i++) {
-                enums[arr[i].toUpperCase()] = arr[i];
-            }
-            return enums;
-        },
+        // enumerize = function (arr) {
+        //     var enums = {};
+        //     for (var i=0; i<arr.length; i++) {
+        //         enums[arr[i].toUpperCase()] = arr[i];
+        //     }
+        //     return enums;
+        // },
         has = function (str1, str2) {
             if (typeof str1 === OBJ_TYPE && str1.length > 0) {
                 for (var i in str1) {
@@ -1003,29 +1003,29 @@
 
     var defaultProps = (function () {
             var props = { init : {}, isIgnore : {}, isIgnoreRgx : {}, toString : {}};
-            setProps.call(props.init, [
-                [UA_BROWSER, [NAME, VERSION, MAJOR, TYPE]],
-                // [UA_CPU, [ARCHITECTURE]],
-                [UA_DEVICE, [TYPE, MODEL, VENDOR]],
-                [UA_ENGINE, [NAME, VERSION]],
-                [UA_OS, [NAME, VERSION]]
-            ]);
-            setProps.call(props.isIgnore, [
-                [UA_BROWSER, [VERSION, MAJOR]],
-                [UA_ENGINE, [VERSION]],
-                [UA_OS, [VERSION]]
-            ]);
-            setProps.call(props.isIgnoreRgx, [
-                [UA_BROWSER, / ?browser$/i],
-                [UA_OS, / ?os$/i]
-            ]);
-            setProps.call(props.toString, [
-                [UA_BROWSER, [NAME, VERSION]],
-                // [UA_CPU, [ARCHITECTURE]],
-                [UA_DEVICE, [VENDOR, MODEL]],
-                [UA_ENGINE, [NAME, VERSION]],
-                [UA_OS, [NAME, VERSION]]
-            ]);
+            // setProps.call(props.init, [
+            //     [UA_BROWSER, [NAME, VERSION, MAJOR, TYPE]],
+            //     // [UA_CPU, [ARCHITECTURE]],
+            //     [UA_DEVICE, [TYPE, MODEL, VENDOR]],
+            //     [UA_ENGINE, [NAME, VERSION]],
+            //     [UA_OS, [NAME, VERSION]]
+            // ]);
+            // setProps.call(props.isIgnore, [
+            //     [UA_BROWSER, [VERSION, MAJOR]],
+            //     [UA_ENGINE, [VERSION]],
+            //     [UA_OS, [VERSION]]
+            // ]);
+            // setProps.call(props.isIgnoreRgx, [
+            //     [UA_BROWSER, / ?browser$/i],
+            //     [UA_OS, / ?os$/i]
+            // ]);
+            // setProps.call(props.toString, [
+            //     [UA_BROWSER, [NAME, VERSION]],
+            //     // [UA_CPU, [ARCHITECTURE]],
+            //     [UA_DEVICE, [VENDOR, MODEL]],
+            //     [UA_ENGINE, [NAME, VERSION]],
+            //     [UA_OS, [NAME, VERSION]]
+            // ]);
             return props;
     })();
 
@@ -1407,10 +1407,10 @@
         return this;
     }
 
-    UAParser.VERSION = LIBVERSION;
-    UAParser.BROWSER =  enumerize([NAME, VERSION, MAJOR, TYPE]);
-    // UAParser.CPU = enumerize([ARCHITECTURE]);
-    UAParser.DEVICE = enumerize([MODEL, VENDOR, TYPE, CONSOLE, MOBILE, SMARTTV, TABLET, WEARABLE, EMBEDDED]);
-    UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
+    // UAParser.VERSION = LIBVERSION;
+    // UAParser.BROWSER =  enumerize([NAME, VERSION, MAJOR, TYPE]);
+    // // UAParser.CPU = enumerize([ARCHITECTURE]);
+    // UAParser.DEVICE = enumerize([MODEL, VENDOR, TYPE, CONSOLE, MOBILE, SMARTTV, TABLET, WEARABLE, EMBEDDED]);
+    // UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
 
     export { UAParser, majorize };

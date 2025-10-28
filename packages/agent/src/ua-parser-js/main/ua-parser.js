@@ -63,22 +63,22 @@
         INAPP       = 'inapp',
 
         // client hints
-        BRANDS      = 'brands',
-        FORMFACTORS = 'formFactors',
-        FULLVERLIST = 'fullVersionList',
-        PLATFORM    = 'platform',
-        PLATFORMVER = 'platformVersion',
-        BITNESS     = 'bitness',
-        CH_HEADER   = 'sec-ch-ua',
-        CH_HEADER_FULL_VER_LIST = CH_HEADER + '-full-version-list',
-        CH_HEADER_ARCH      = CH_HEADER + '-arch',
-        CH_HEADER_BITNESS   = CH_HEADER + '-' + BITNESS,
-        CH_HEADER_FORM_FACTORS = CH_HEADER + '-form-factors',
-        CH_HEADER_MOBILE    = CH_HEADER + '-' + MOBILE,
-        CH_HEADER_MODEL     = CH_HEADER + '-' + MODEL,
-        CH_HEADER_PLATFORM  = CH_HEADER + '-' + PLATFORM,
-        CH_HEADER_PLATFORM_VER = CH_HEADER_PLATFORM + '-version',
-        CH_ALL_VALUES       = [BRANDS, FULLVERLIST, MOBILE, MODEL, PLATFORM, PLATFORMVER, ARCHITECTURE, FORMFACTORS, BITNESS],
+        // BRANDS      = 'brands',
+        // FORMFACTORS = 'formFactors',
+        // FULLVERLIST = 'fullVersionList',
+        // PLATFORM    = 'platform',
+        // PLATFORMVER = 'platformVersion',
+        // BITNESS     = 'bitness',
+        // CH_HEADER   = 'sec-ch-ua',
+        // CH_HEADER_FULL_VER_LIST = CH_HEADER + '-full-version-list',
+        // CH_HEADER_ARCH      = CH_HEADER + '-arch',
+        // CH_HEADER_BITNESS   = CH_HEADER + '-' + BITNESS,
+        // CH_HEADER_FORM_FACTORS = CH_HEADER + '-form-factors',
+        // CH_HEADER_MOBILE    = CH_HEADER + '-' + MOBILE,
+        // CH_HEADER_MODEL     = CH_HEADER + '-' + MODEL,
+        // CH_HEADER_PLATFORM  = CH_HEADER + '-' + PLATFORM,
+        // CH_HEADER_PLATFORM_VER = CH_HEADER_PLATFORM + '-version',
+        // CH_ALL_VALUES       = [BRANDS, FULLVERLIST, MOBILE, MODEL, PLATFORM, PLATFORMVER, ARCHITECTURE, FORMFACTORS, BITNESS],
 
         // device vendors
         AMAZON      = 'Amazon',
@@ -169,20 +169,20 @@
         isString = function (val) {
             return typeof val === STR_TYPE;
         },
-        itemListToArray = function (header) {
-            if (!header) return undefined;
-            var arr = [];
-            var tokens = strip(/\\?\"/g, header).split(',');
-            for (var i = 0; i < tokens.length; i++) {
-                if (tokens[i].indexOf(';') > -1) {
-                    var token = trim(tokens[i]).split(';v=');
-                    arr[i] = { brand : token[0], version : token[1] };
-                } else {
-                    arr[i] = trim(tokens[i]);
-                }
-            }
-            return arr;
-        },
+        // itemListToArray = function (header) {
+        //     if (!header) return undefined;
+        //     var arr = [];
+        //     var tokens = strip(/\\?\"/g, header).split(',');
+        //     for (var i = 0; i < tokens.length; i++) {
+        //         if (tokens[i].indexOf(';') > -1) {
+        //             var token = trim(tokens[i]).split(';v=');
+        //             arr[i] = { brand : token[0], version : token[1] };
+        //         } else {
+        //             arr[i] = trim(tokens[i]);
+        //         }
+        //     }
+        //     return arr;
+        // },
         lowerize = function (str) {
             return isString(str) ? str.toLowerCase() : str;
         },
@@ -203,9 +203,9 @@
         strip = function (pattern, str) {
             return isString(str) ? str.replace(pattern, EMPTY) : str;
         },
-        stripQuotes = function (str) {
-            return strip(/\\?\"/g, str); 
-        },
+        // stripQuotes = function (str) {
+        //     return strip(/\\?\"/g, str); 
+        // },
         trim = function (str, len) {
             if (isString(str)) {
                 str = strip(/^\s\s*/, str);
@@ -305,17 +305,17 @@
             '8.1'       : 'NT 6.3',
             '10'        : ['NT 6.4', 'NT 10.0'],
             'RT'        : 'ARM'
-        },
+        // },
         
-        formFactorsMap = {
-            'embedded'  : 'Automotive',
-            'mobile'    : 'Mobile',
-            'tablet'    : ['Tablet', 'EInk'],
-            'smarttv'   : 'TV',
-            'wearable'  : 'Watch',
-            'xr'        : ['VR', 'XR'],
-            '?'         : ['Desktop', 'Unknown'],
-            '*'         : undefined
+        // formFactorsMap = {
+        //     'embedded'  : 'Automotive',
+        //     'mobile'    : 'Mobile',
+        //     'tablet'    : ['Tablet', 'EInk'],
+        //     'smarttv'   : 'TV',
+        //     'wearable'  : 'Watch',
+        //     'xr'        : ['VR', 'XR'],
+        //     '?'         : ['Desktop', 'Unknown'],
+        //     '*'         : undefined
     };
 
     //////////////
@@ -1044,25 +1044,25 @@
             return item;
         };
 
-        IData.prototype.withClientHints = function () {
+        // IData.prototype.withClientHints = function () {
 
-            // nodejs / non-client-hints browsers
-            if (!NAVIGATOR_UADATA) {
-                return item
-                        .parseCH()
-                        .get();
-            }
+        //     // nodejs / non-client-hints browsers
+        //     if (!NAVIGATOR_UADATA) {
+        //         return item
+        //                 .parseCH()
+        //                 .get();
+        //     }
 
-            // browsers based on chromium 85+
-            return NAVIGATOR_UADATA
-                    .getHighEntropyValues(CH_ALL_VALUES)
-                    .then(function (res) {
-                        return item
-                                .setCH(new UACHData(res, false))
-                                .parseCH()
-                                .get();
-            });
-        };
+        //     // browsers based on chromium 85+
+        //     return NAVIGATOR_UADATA
+        //             .getHighEntropyValues(CH_ALL_VALUES)
+        //             .then(function (res) {
+        //                 return item
+        //                         .setCH(new UACHData(res, false))
+        //                         .parseCH()
+        //                         .get();
+        //     });
+        // };
 
         IData.prototype.withFeatureCheck = function () {
             return item.detectFeature().get();
@@ -1093,25 +1093,25 @@
             };
         }
 
-        if (!NAVIGATOR_UADATA) {
-            IData.prototype.then = function (cb) { 
-                var that = this;
-                var IDataResolve = function () {
-                    for (var prop in that) {
-                        if (that.hasOwnProperty(prop)) {
-                            this[prop] = that[prop];
-                        }
-                    }
-                };
-                IDataResolve.prototype = {
-                    is : IData.prototype.is,
-                    toString : IData.prototype.toString
-                };
-                var resolveData = new IDataResolve();
-                cb(resolveData);
-                return resolveData;
-            };
-        }
+        // if (!NAVIGATOR_UADATA) {
+        //     IData.prototype.then = function (cb) { 
+        //         var that = this;
+        //         var IDataResolve = function () {
+        //             for (var prop in that) {
+        //                 if (that.hasOwnProperty(prop)) {
+        //                     this[prop] = that[prop];
+        //                 }
+        //             }
+        //         };
+        //         IDataResolve.prototype = {
+        //             is : IData.prototype.is,
+        //             toString : IData.prototype.toString
+        //         };
+        //         var resolveData = new IDataResolve();
+        //         cb(resolveData);
+        //         return resolveData;
+        //     };
+        // }
 
         return new IData();
     };
@@ -1120,27 +1120,27 @@
     // Constructor
     ////////////////
 
-    function UACHData (uach, isHttpUACH) {
-        uach = uach || {};
-        setProps.call(this, CH_ALL_VALUES);
-        if (isHttpUACH) {
-            setProps.call(this, [
-                [BRANDS, itemListToArray(uach[CH_HEADER])],
-                [FULLVERLIST, itemListToArray(uach[CH_HEADER_FULL_VER_LIST])],
-                [MOBILE, /\?1/.test(uach[CH_HEADER_MOBILE])],
-                [MODEL, stripQuotes(uach[CH_HEADER_MODEL])],
-                [PLATFORM, stripQuotes(uach[CH_HEADER_PLATFORM])],
-                [PLATFORMVER, stripQuotes(uach[CH_HEADER_PLATFORM_VER])],
-                [ARCHITECTURE, stripQuotes(uach[CH_HEADER_ARCH])],
-                [FORMFACTORS, itemListToArray(uach[CH_HEADER_FORM_FACTORS])],
-                [BITNESS, stripQuotes(uach[CH_HEADER_BITNESS])]
-            ]);
-        } else {
-            for (var prop in uach) {
-                if(this.hasOwnProperty(prop) && typeof uach[prop] !== UNDEF_TYPE) this[prop] = uach[prop];
-            }
-        }
-    }
+    // function UACHData (uach, isHttpUACH) {
+    //     uach = uach || {};
+    //     setProps.call(this, CH_ALL_VALUES);
+    //     if (isHttpUACH) {
+    //         setProps.call(this, [
+    //             [BRANDS, itemListToArray(uach[CH_HEADER])],
+    //             [FULLVERLIST, itemListToArray(uach[CH_HEADER_FULL_VER_LIST])],
+    //             [MOBILE, /\?1/.test(uach[CH_HEADER_MOBILE])],
+    //             [MODEL, stripQuotes(uach[CH_HEADER_MODEL])],
+    //             [PLATFORM, stripQuotes(uach[CH_HEADER_PLATFORM])],
+    //             [PLATFORMVER, stripQuotes(uach[CH_HEADER_PLATFORM_VER])],
+    //             [ARCHITECTURE, stripQuotes(uach[CH_HEADER_ARCH])],
+    //             [FORMFACTORS, itemListToArray(uach[CH_HEADER_FORM_FACTORS])],
+    //             [BITNESS, stripQuotes(uach[CH_HEADER_BITNESS])]
+    //         ]);
+    //     } else {
+    //         for (var prop in uach) {
+    //             if(this.hasOwnProperty(prop) && typeof uach[prop] !== UNDEF_TYPE) this[prop] = uach[prop];
+    //         }
+    //     }
+    // }
 
     function UAItem (itemType, ua, rgxMap, uaCH) {
 
@@ -1154,10 +1154,10 @@
             return this;
         };
 
-        this.setCH = function (ch) {
-            this.uaCH = ch;
-            return this;
-        };
+        // this.setCH = function (ch) {
+        //     this.uaCH = ch;
+        //     return this;
+        // };
 
         this.detectFeature = function () {
             if (NAVIGATOR && NAVIGATOR.userAgent == this.ua) {
@@ -1213,113 +1213,113 @@
             return this;
         };
 
-        this.parseCH = function () {
-            var uaCH = this.uaCH,
-                rgxMap = this.rgxMap;
+        // this.parseCH = function () {
+        //     var uaCH = this.uaCH,
+        //         rgxMap = this.rgxMap;
     
-            switch (this.itemType) {
-                case UA_BROWSER:
-                case UA_ENGINE:
-                    var brands = uaCH[FULLVERLIST] || uaCH[BRANDS], prevName;
-                    if (brands) {
-                        for (var i in brands) {
-                            var brandName = brands[i].brand || brands[i],
-                                brandVersion = brands[i].version;
-                            if (this.itemType == UA_BROWSER && !/not.a.brand/i.test(brandName) && (!prevName || (/chrom/i.test(prevName) && brandName != CHROMIUM))) {
-                                brandName = strMapper(brandName, {
-                                    'Chrome' : 'Google Chrome',
-                                    'Edge' : 'Microsoft Edge',
-                                    'Chrome WebView' : 'Android WebView',
-                                    'Chrome Headless' : 'HeadlessChrome',
-                                    'Huawei Browser' : 'HuaweiBrowser',
-                                    'MIUI Browser' : 'Miui Browser',
-                                    'Opera Mobi' : 'OperaMobile',
-                                    'Yandex' : 'YaBrowser'
-                                });
-                                this.set(NAME, brandName)
-                                    .set(VERSION, brandVersion)
-                                    .set(MAJOR, majorize(brandVersion));
-                                prevName = brandName;
-                            }
-                            if (this.itemType == UA_ENGINE && brandName == CHROMIUM) {
-                                this.set(VERSION, brandVersion);
-                            }
-                        }
-                    }
-                    break;
-                case UA_CPU:
-                    var archName = uaCH[ARCHITECTURE];
-                    if (archName) {
-                        if (archName && uaCH[BITNESS] == '64') archName += '64';
-                        rgxMapper.call(this.data, archName + ';', rgxMap);
-                    }
-                    break;
-                case UA_DEVICE:
-                    if (uaCH[MOBILE]) {
-                        this.set(TYPE, MOBILE);
-                    }
-                    if (uaCH[MODEL]) {
-                        this.set(MODEL, uaCH[MODEL]);
-                        if (!this.get(TYPE) || !this.get(VENDOR)) {
-                            var reParse = {};
-                            rgxMapper.call(reParse, 'droid 9; ' + uaCH[MODEL] + ')', rgxMap);
-                            if (!this.get(TYPE) && !!reParse.type) {
-                                this.set(TYPE, reParse.type);
-                            }
-                            if (!this.get(VENDOR) && !!reParse.vendor) {
-                                this.set(VENDOR, reParse.vendor);
-                            }
-                        }
-                    }
-                    if (uaCH[FORMFACTORS]) {
-                        var ff;
-                        if (typeof uaCH[FORMFACTORS] !== 'string') {
-                            var idx = 0;
-                            while (!ff && idx < uaCH[FORMFACTORS].length) {
-                                ff = strMapper(uaCH[FORMFACTORS][idx++], formFactorsMap);
-                            }
-                        } else {
-                            ff = strMapper(uaCH[FORMFACTORS], formFactorsMap);
-                        }
-                        this.set(TYPE, ff);
-                    }
-                    break;
-                case UA_OS:
-                    var osName = uaCH[PLATFORM];
-                    if(osName) {
-                        var osVersion = uaCH[PLATFORMVER];
-                        if (osName == WINDOWS) osVersion = (parseInt(majorize(osVersion), 10) >= 13 ? '11' : '10');
-                        this.set(NAME, osName)
-                            .set(VERSION, osVersion);
-                    }
-                    // Xbox-Specific Detection
-                    if (this.get(NAME) == WINDOWS && uaCH[MODEL] == 'Xbox') {
-                        this.set(NAME, 'Xbox')
-                            .set(VERSION, undefined);
-                    }           
-                    break;
-                case UA_RESULT:
-                    var data = this.data;
-                    var parse = function (itemType) {
-                        return data[itemType]
-                                .getItem()
-                                .setCH(uaCH)
-                                .parseCH()
-                                .get();
-                    };
-                    this.set(UA_BROWSER, parse(UA_BROWSER))
-                        .set(UA_CPU, parse(UA_CPU))
-                        .set(UA_DEVICE, parse(UA_DEVICE))
-                        .set(UA_ENGINE, parse(UA_ENGINE))
-                        .set(UA_OS, parse(UA_OS));
-            }
-            return this;
-        };
+        //     switch (this.itemType) {
+        //         case UA_BROWSER:
+        //         case UA_ENGINE:
+        //             var brands = uaCH[FULLVERLIST] || uaCH[BRANDS], prevName;
+        //             if (brands) {
+        //                 for (var i in brands) {
+        //                     var brandName = brands[i].brand || brands[i],
+        //                         brandVersion = brands[i].version;
+        //                     if (this.itemType == UA_BROWSER && !/not.a.brand/i.test(brandName) && (!prevName || (/chrom/i.test(prevName) && brandName != CHROMIUM))) {
+        //                         brandName = strMapper(brandName, {
+        //                             'Chrome' : 'Google Chrome',
+        //                             'Edge' : 'Microsoft Edge',
+        //                             'Chrome WebView' : 'Android WebView',
+        //                             'Chrome Headless' : 'HeadlessChrome',
+        //                             'Huawei Browser' : 'HuaweiBrowser',
+        //                             'MIUI Browser' : 'Miui Browser',
+        //                             'Opera Mobi' : 'OperaMobile',
+        //                             'Yandex' : 'YaBrowser'
+        //                         });
+        //                         this.set(NAME, brandName)
+        //                             .set(VERSION, brandVersion)
+        //                             .set(MAJOR, majorize(brandVersion));
+        //                         prevName = brandName;
+        //                     }
+        //                     if (this.itemType == UA_ENGINE && brandName == CHROMIUM) {
+        //                         this.set(VERSION, brandVersion);
+        //                     }
+        //                 }
+        //             }
+        //             break;
+        //         case UA_CPU:
+        //             var archName = uaCH[ARCHITECTURE];
+        //             if (archName) {
+        //                 if (archName && uaCH[BITNESS] == '64') archName += '64';
+        //                 rgxMapper.call(this.data, archName + ';', rgxMap);
+        //             }
+        //             break;
+        //         case UA_DEVICE:
+        //             if (uaCH[MOBILE]) {
+        //                 this.set(TYPE, MOBILE);
+        //             }
+        //             if (uaCH[MODEL]) {
+        //                 this.set(MODEL, uaCH[MODEL]);
+        //                 if (!this.get(TYPE) || !this.get(VENDOR)) {
+        //                     var reParse = {};
+        //                     rgxMapper.call(reParse, 'droid 9; ' + uaCH[MODEL] + ')', rgxMap);
+        //                     if (!this.get(TYPE) && !!reParse.type) {
+        //                         this.set(TYPE, reParse.type);
+        //                     }
+        //                     if (!this.get(VENDOR) && !!reParse.vendor) {
+        //                         this.set(VENDOR, reParse.vendor);
+        //                     }
+        //                 }
+        //             }
+        //             if (uaCH[FORMFACTORS]) {
+        //                 var ff;
+        //                 if (typeof uaCH[FORMFACTORS] !== 'string') {
+        //                     var idx = 0;
+        //                     while (!ff && idx < uaCH[FORMFACTORS].length) {
+        //                         ff = strMapper(uaCH[FORMFACTORS][idx++], formFactorsMap);
+        //                     }
+        //                 } else {
+        //                     ff = strMapper(uaCH[FORMFACTORS], formFactorsMap);
+        //                 }
+        //                 this.set(TYPE, ff);
+        //             }
+        //             break;
+        //         case UA_OS:
+        //             var osName = uaCH[PLATFORM];
+        //             if(osName) {
+        //                 var osVersion = uaCH[PLATFORMVER];
+        //                 if (osName == WINDOWS) osVersion = (parseInt(majorize(osVersion), 10) >= 13 ? '11' : '10');
+        //                 this.set(NAME, osName)
+        //                     .set(VERSION, osVersion);
+        //             }
+        //             // Xbox-Specific Detection
+        //             if (this.get(NAME) == WINDOWS && uaCH[MODEL] == 'Xbox') {
+        //                 this.set(NAME, 'Xbox')
+        //                     .set(VERSION, undefined);
+        //             }           
+        //             break;
+        //         case UA_RESULT:
+        //             var data = this.data;
+        //             var parse = function (itemType) {
+        //                 return data[itemType]
+        //                         .getItem()
+        //                         .setCH(uaCH)
+        //                         .parseCH()
+        //                         .get();
+        //             };
+        //             this.set(UA_BROWSER, parse(UA_BROWSER))
+        //                 .set(UA_CPU, parse(UA_CPU))
+        //                 .set(UA_DEVICE, parse(UA_DEVICE))
+        //                 .set(UA_ENGINE, parse(UA_ENGINE))
+        //                 .set(UA_OS, parse(UA_OS));
+        //     }
+        //     return this;
+        // };
 
         setProps.call(this, [
             ['itemType', itemType],
             ['ua', ua],
-            ['uaCH', uaCH],
+            // ['uaCH', uaCH],
             ['rgxMap', rgxMap],
             ['data', createIData(this, itemType)]
         ]);
@@ -1361,7 +1361,7 @@
                                 ((NAVIGATOR && NAVIGATOR.userAgent) ? NAVIGATOR.userAgent : // navigator.userAgent
                                     EMPTY)),                                                // empty string
 
-            httpUACH = new UACHData(headers, true),
+            // httpUACH = new UACHData(headers, true),
             regexMap = extensions ? 
                         extend(defaultRegexes, extensions) : 
                         defaultRegexes,
@@ -1369,7 +1369,7 @@
             createItemFunc = function (itemType) {
                 if (itemType == UA_RESULT) {
                     return function () {
-                        return new UAItem(itemType, userAgent, regexMap, httpUACH)
+                        return new UAItem(itemType, userAgent, regexMap, 'httpUACH')
                                     .set('ua', userAgent)
                                     .set(UA_BROWSER, this.getBrowser())
                                     .set(UA_CPU, this.getCPU())
@@ -1380,7 +1380,7 @@
                     };
                 } else {
                     return function () {
-                        return new UAItem(itemType, userAgent, regexMap[itemType], httpUACH)
+                        return new UAItem(itemType, userAgent, regexMap[itemType], 'httpUACH')
                                     .parseUA()
                                     .get();
                     };

@@ -35,7 +35,7 @@
 
         // properties
         UA_BROWSER  = 'browser',
-        UA_CPU      = 'cpu',
+        // UA_CPU      = 'cpu',
         UA_DEVICE   = 'device',
         UA_ENGINE   = 'engine',
         UA_OS       = 'os',
@@ -45,7 +45,7 @@
         TYPE        = 'type',
         VENDOR      = 'vendor',
         VERSION     = 'version',
-        ARCHITECTURE= 'architecture',
+        // ARCHITECTURE= 'architecture',
         MAJOR       = 'major',
         MODEL       = 'model',
 
@@ -496,35 +496,35 @@
             ], [NAME, [VERSION, /[^\d\.]+./, EMPTY]]
         ],
 
-        cpu : [[
+        // cpu : [[
 
-            /\b((amd|x|x86[-_]?|wow|win)64)\b/i                                 // AMD64 (x64)
-            ], [[ARCHITECTURE, 'amd64']], [
+        //     /\b((amd|x|x86[-_]?|wow|win)64)\b/i                                 // AMD64 (x64)
+        //     ], [[ARCHITECTURE, 'amd64']], [
 
-            /(ia32(?=;))/i,                                                     // IA32 (quicktime)
-            /\b((i[346]|x)86)(pc)?\b/i                                          // IA32 (x86)
-            ], [[ARCHITECTURE, 'ia32']], [
+        //     /(ia32(?=;))/i,                                                     // IA32 (quicktime)
+        //     /\b((i[346]|x)86)(pc)?\b/i                                          // IA32 (x86)
+        //     ], [[ARCHITECTURE, 'ia32']], [
 
-            /\b(aarch64|arm(v?[89]e?l?|_?64))\b/i                               // ARM64
-            ], [[ARCHITECTURE, 'arm64']], [
+        //     /\b(aarch64|arm(v?[89]e?l?|_?64))\b/i                               // ARM64
+        //     ], [[ARCHITECTURE, 'arm64']], [
 
-            /\b(arm(v[67])?ht?n?[fl]p?)\b/i                                     // ARMHF
-            ], [[ARCHITECTURE, 'armhf']], [
+        //     /\b(arm(v[67])?ht?n?[fl]p?)\b/i                                     // ARMHF
+        //     ], [[ARCHITECTURE, 'armhf']], [
 
-            // PocketPC mistakenly identified as PowerPC
-            /( (ce|mobile); ppc;|\/[\w\.]+arm\b)/i
-            ], [[ARCHITECTURE, 'arm']], [
+        //     // PocketPC mistakenly identified as PowerPC
+        //     /( (ce|mobile); ppc;|\/[\w\.]+arm\b)/i
+        //     ], [[ARCHITECTURE, 'arm']], [
 
-            /((ppc|powerpc)(64)?)( mac|;|\))/i                                  // PowerPC
-            ], [[ARCHITECTURE, /ower/, EMPTY, lowerize]], [
+        //     /((ppc|powerpc)(64)?)( mac|;|\))/i                                  // PowerPC
+        //     ], [[ARCHITECTURE, /ower/, EMPTY, lowerize]], [
 
-            / sun4\w[;\)]/i                                                     // SPARC
-            ], [[ARCHITECTURE, 'sparc']], [
+        //     / sun4\w[;\)]/i                                                     // SPARC
+        //     ], [[ARCHITECTURE, 'sparc']], [
 
-            /\b(avr32|ia64(?=;)|68k(?=\))|\barm(?=v([1-7]|[5-7]1)l?|;|eabi)|(irix|mips|sparc)(64)?\b|pa-risc)/i
-                                                                                // IA64, 68K, ARM/64, AVR/32, IRIX/64, MIPS/64, SPARC/64, PA-RISC
-            ], [[ARCHITECTURE, lowerize]]
-        ],
+        //     /\b(avr32|ia64(?=;)|68k(?=\))|\barm(?=v([1-7]|[5-7]1)l?|;|eabi)|(irix|mips|sparc)(64)?\b|pa-risc)/i
+        //                                                                         // IA64, 68K, ARM/64, AVR/32, IRIX/64, MIPS/64, SPARC/64, PA-RISC
+        //     ], [[ARCHITECTURE, lowerize]]
+        // ],
 
         device : [[
 
@@ -1005,7 +1005,7 @@
             var props = { init : {}, isIgnore : {}, isIgnoreRgx : {}, toString : {}};
             setProps.call(props.init, [
                 [UA_BROWSER, [NAME, VERSION, MAJOR, TYPE]],
-                [UA_CPU, [ARCHITECTURE]],
+                // [UA_CPU, [ARCHITECTURE]],
                 [UA_DEVICE, [TYPE, MODEL, VENDOR]],
                 [UA_ENGINE, [NAME, VERSION]],
                 [UA_OS, [NAME, VERSION]]
@@ -1021,7 +1021,7 @@
             ]);
             setProps.call(props.toString, [
                 [UA_BROWSER, [NAME, VERSION]],
-                [UA_CPU, [ARCHITECTURE]],
+                // [UA_CPU, [ARCHITECTURE]],
                 [UA_DEVICE, [VENDOR, MODEL]],
                 [UA_ENGINE, [NAME, VERSION]],
                 [UA_OS, [NAME, VERSION]]
@@ -1194,7 +1194,7 @@
                                     .get();
                         };
                         this.set(UA_BROWSER, detect(UA_BROWSER))
-                            .set(UA_CPU, detect(UA_CPU))
+                            // .set(UA_CPU, detect(UA_CPU))
                             .set(UA_DEVICE, detect(UA_DEVICE))
                             .set(UA_ENGINE, detect(UA_ENGINE))
                             .set(UA_OS, detect(UA_OS));
@@ -1372,7 +1372,7 @@
                         return new UAItem(itemType, userAgent, regexMap, 'httpUACH')
                                     .set('ua', userAgent)
                                     .set(UA_BROWSER, this.getBrowser())
-                                    .set(UA_CPU, this.getCPU())
+                                    // .set(UA_CPU, this.getCPU())
                                     .set(UA_DEVICE, this.getDevice())
                                     .set(UA_ENGINE, this.getEngine())
                                     .set(UA_OS, this.getOS())
@@ -1390,7 +1390,7 @@
         // public methods
         setProps.call(this, [
             ['getBrowser', createItemFunc(UA_BROWSER)],
-            ['getCPU', createItemFunc(UA_CPU)],
+            // ['getCPU', createItemFunc(UA_CPU)],
             ['getDevice', createItemFunc(UA_DEVICE)],
             ['getEngine', createItemFunc(UA_ENGINE)],
             ['getOS', createItemFunc(UA_OS)],
@@ -1409,7 +1409,7 @@
 
     UAParser.VERSION = LIBVERSION;
     UAParser.BROWSER =  enumerize([NAME, VERSION, MAJOR, TYPE]);
-    UAParser.CPU = enumerize([ARCHITECTURE]);
+    // UAParser.CPU = enumerize([ARCHITECTURE]);
     UAParser.DEVICE = enumerize([MODEL, VENDOR, TYPE, CONSOLE, MOBILE, SMARTTV, TABLET, WEARABLE, EMBEDDED]);
     UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
 

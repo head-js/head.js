@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+  <link rel="icon" href="/rsrc/img/favicon.ico" />
+
+  <title>@head.js/snippet-modernizr</title>
+
+  <script>
+  /* @head.js/snippet-init 0.5.1 */
+  !function(){const n=window||__hlobal__;n.head=function(o,_,a){a||(a=_,_=o,o="head"),n[o][_]=a}}();
+  </script>
+
+  <style>
+    ul li { color: #123456; }
+    .feature-failed { color: #f50; }
+  </style>
+</head>
+<body>
+    
+  <div>
+    <h4>User Agent</h4>
+    <ul class="js-useragent"></ul>
+
+    <h4>Baseline</h4>
+    <ul class="js-baseline"></ul>
+
+    <h4>Optimistic</h4>
+    <ul class="js-optimistic"></ul>
+  </div>
+
+  <script src="/rsrc/js/agent-0626b0.js"></script>
+  <script src="/rsrc/js/modernizr-c36fd57d53.js"></script>
+  <script src="/rsrc/js/modernizr-aa3aff.js"></script>
+
+  <script>
+    // vanilla.js/lodash/handlerbars.js
+    function $tpl(tpl, locals, filters) {
+      filters = filters || {};
+      
+      return tpl.replace(/{{\s*(\w+)(?:\s*\|\s*(\w+))?\s*}}/g,
+        function(match, key, filterName) {
+          var value = locals[key] !== undefined ? locals[key] : "";
+          if (filterName && filters[filterName]) {
+            value = filters[filterName](value);
+          }
+          return value;
+        });
+    }
+
+    // vanilla.js/jquery/html.js
+    function $html(selector, html) {
+      // The selector should return ONE and only ONE element
+      var el = document.querySelector(selector);
+      el.innerHTML = html;
+      return el;
+    };
+
+    var TPL = '<li class="{{ klass }}">{{ feature }}</li>';
+
+    var useragent = [];
+    useragent.push($tpl(TPL, { feature: navigator.userAgent, klass: '' }));
+    useragent.push($tpl(TPL, { feature: 'device: ' + head.agent.device.type, klass: '' }));
+    useragent.push($tpl(TPL, { feature: 'os: ' + head.agent.os.name + '@' + head.agent.os.major, klass: '' }));
+    useragent.push($tpl(TPL, { feature: 'browser: ' + head.agent.browser.name + '@' + head.agent.browser.major, klass: '' }));
+    $html('.js-useragent', useragent.join(''));
+
+    function $render(M, features, container) {
+      var html = [];
+      for (var f of features) {
+        html.push($tpl(TPL, { feature: f, klass: M[f] ? '': 'feature-failed' }));
+      }
+      $html(container, html.join(''));
+    }
+
+    var BASELINE = [
+      'es6/promieses',
+      'es6/arrow',
+      'es6/rest-parameters',
+      'es6/spread-array',
+    ];
+
+    var OPTIMISTIC = [
+      'es7/spread-object',
+      'img/webp/lossless',
+      'img/webp/alpha',
+      'img/webp/animation',
+      'extra/http2',
+    ];
+
+    head.modernizr(function (M) {
+      $render(M, BASELINE, '.js-baseline');
+      $render(M, OPTIMISTIC, '.js-optimistic');
+    });
+  </script>
+
+  <script>
+  /* @head.js/analytics-pv 0.0.1 */
+  (function(){function _noop(){}function _post(url,body){var headers=new Headers({
+  "Content-Type":"text/plain;charset=UTF-8"});var req={method:"POST",headers:headers,body:body}
+  ;return new Promise((function(){fetch(url,req).then(_noop).catch(_noop)}))}function _uuid(placeholder){
+  return placeholder?(parseInt(placeholder,10)^Math.random()*16>>parseInt(placeholder,10)/4).toString(16):"".concat(1e7,"-").concat(1e3,"-").concat(4e3,"-").concat(8e3,"-").concat(1e11).replace(/[018]/g,_uuid)
+  }function _template(tpl,locals){var fn=new Function("_","return `"+tpl+"`;");return fn(locals)}
+  var endpoint="https://rum-openway.guance.com/v1/write/rum?token=2OQwyC4AulthZZNx7lwSRLAZpOaqbyC26ATF0pYdC34y7MP31A&to_headless=true&precision=ms"
+  ;var GUANCE='view,sdk_name=df_web_rum_sdk,sdk_version=3.2.24,app_id=${_.a},env=${_.p},service=browser,version=${_.r},source=browser,userid=${_.u},os=${_.o},os_version_major=${_.om},browser=${_.b},browser_version_major=${_.bm},device=${_.d},view_id=${_.v},view_url=${_.l},view_path=${_.t},view_loading_type=initial_load view_url_query="{}",drift=0 '
+  ;var VIEW={a:"de",p:"prd",r:"0.0.1",u:_uuid(),v:_uuid(),l:"https://cdn.lisitede.com/modernizr-aee143-002.html",
+  t:"/modernizr-aee143-002.html",d:head.agent.device.type,o:head.agent.os.name,om:head.agent.os.major,b:head.agent.browser.name,
+  bm:head.agent.browser.major};var body=_template(GUANCE,VIEW)+Date.now();_post(endpoint,body)})();
+  </script>
+</body>
+</html>

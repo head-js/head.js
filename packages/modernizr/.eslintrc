@@ -1,0 +1,19 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": "eslint-config-airbnb",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "Modernizr": true,
+    "head": true
+  },
+  "rules": {
+    "consistent-return": "off",
+    "no-underscore-dangle": "off",
+    "func-names": "off",
+    "max-len": "off",
+    "no-console": "off",
+    "no-multiple-empty-lines": "off"
+  }
+}

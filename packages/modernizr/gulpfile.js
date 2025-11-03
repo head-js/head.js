@@ -12,6 +12,8 @@ gulp.task('generate', (done) => {
       'es6/rest-parameters',
       'es6/spread-array',
       'es7/spread-object',
+      'img/webp',
+      '../../../src/http2',
     ],
   }, function(output) {
     fs.outputFile('dist/modernizr.js', output).then(() => {

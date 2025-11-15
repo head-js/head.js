@@ -11,6 +11,8 @@ gulp.task('generate', (done) => {
       'es6/arrow',
       'es6/rest-parameters',
       'es6/spread-array',
+      'es6/collections',
+      'css/customproperties',
       'es7/spread-object',
       'img/webp',
       '../../../src/http2',

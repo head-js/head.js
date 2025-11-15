@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.13.1
- * Build https://modernizr.com/download?-arrow-promises-restparameters-spreadarray-spreadobject-webp-dontmin
+ * Build https://modernizr.com/download?-arrow-customproperties-es6collections-promises-restparameters-spreadarray-spreadobject-webp-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -291,6 +291,48 @@ Check if browser implements ECMAScript 6 spread syntax (in array and function ca
     }
     return true;
   });
+
+/*!
+{
+  "name": "ES6 Collections",
+  "property": "es6collections",
+  "notes": [{
+    "name": "unofficial ECMAScript 6 draft specification",
+    "href": "https://web.archive.org/web/20180825202128/https://tc39.github.io/ecma262/"
+  }],
+  "polyfills": ["es6shim", "weakmap"],
+  "authors": ["Ron Waldon (@jokeyrhyme)"],
+  "warnings": ["ECMAScript 6 is still a only a draft, so this detect may not match the final specification or implementations."],
+  "tags": ["es6"]
+}
+!*/
+/* DOC
+Check if browser implements ECMAScript 6 Map, Set, WeakMap and WeakSet
+*/
+
+  Modernizr.addTest('es6collections', !!(
+    window.Map && window.Set && window.WeakMap && window.WeakSet
+  ));
+
+/*!
+{
+  "name": "CSS Custom Properties",
+  "property": "customproperties",
+  "caniuse": "css-variables",
+  "tags": ["css"],
+  "builderAliases": ["css_customproperties"],
+  "notes": [{
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/--*"
+  }, {
+    "name": "W3C Spec",
+    "href": "https://drafts.csswg.org/css-variables/"
+  }]
+}
+!*/
+
+  var supportsFn = (window.CSS && window.CSS.supports.bind(window.CSS)) || (window.supportsCSS);
+  Modernizr.addTest('customproperties', !!supportsFn && (supportsFn('--f:0') || supportsFn('--f', 0)));
 
 /*!
 {

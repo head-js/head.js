@@ -13,8 +13,10 @@ gulp.task('generate', (done) => {
       'es6/spread-array',
       'es6/collections',
       'css/customproperties',
+      'workers/webworkers',
       'es7/spread-object',
       'img/webp',
+      'serviceworker',
       '../../../src/http2',
     ],
   }, function(output) {

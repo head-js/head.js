@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.13.1
- * Build https://modernizr.com/download?-arrow-customproperties-es6collections-promises-restparameters-spreadarray-spreadobject-webp-dontmin
+ * Build https://modernizr.com/download?-arrow-customproperties-es6collections-promises-restparameters-serviceworker-spreadarray-spreadobject-webp-webworkers-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -333,6 +333,31 @@ Check if browser implements ECMAScript 6 Map, Set, WeakMap and WeakSet
 
   var supportsFn = (window.CSS && window.CSS.supports.bind(window.CSS)) || (window.supportsCSS);
   Modernizr.addTest('customproperties', !!supportsFn && (supportsFn('--f:0') || supportsFn('--f', 0)));
+
+/*!
+{
+  "name": "Web Workers",
+  "property": "webworkers",
+  "caniuse": "webworkers",
+  "tags": ["performance", "workers"],
+  "notes": [{
+    "name": "W3C Spec",
+    "href": "https://www.w3.org/TR/workers/"
+  }, {
+    "name": "HTML5 Rocks Tutorial",
+    "href": "https://www.html5rocks.com/en/tutorials/workers/basics/"
+  }, {
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"
+  }],
+  "polyfills": ["fakeworker", "html5shims"]
+}
+!*/
+/* DOC
+Detects support for the basic `Worker` API from the Web Workers spec. Web Workers provide a simple means for web content to run scripts in background threads.
+*/
+
+  Modernizr.addTest('webworkers', 'Worker' in window);
 
 /*!
 {
@@ -756,6 +781,23 @@ Tests for all forms of webp support (lossless, lossy, alpha, and animated)..
 
   });
 
+
+/*!
+{
+  "name": "ServiceWorker API",
+  "property": "serviceworker",
+  "caniuse": "serviceworkers",
+  "notes": [{
+    "name": "ServiceWorkers Explained",
+    "href": "https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md"
+  }]
+}
+!*/
+/* DOC
+ServiceWorkers (formerly Navigation Controllers) are a way to persistently cache resources to built apps that work better offline.
+*/
+
+  Modernizr.addTest('serviceworker', 'serviceWorker' in navigator);
 
 /*!
 {

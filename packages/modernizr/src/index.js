@@ -31,11 +31,13 @@ const r = $ready(['webp', 'http2']).then(() => {
     'es6/spread-array': 'spreadarray',
     'es6/weak-map': 'es6collections',
     'css/vars': 'customproperties',
+    'web-worker': 'webworkers',
     // OPTIMISTIC
     'es7/spread-object': 'spreadobject',
     'img/webp/lossless': 'webp.lossless',
     'img/webp/alpha': 'webp.alpha',
     'img/webp/animation': 'webp.animation',
+    'service-worker': 'serviceworker',
     'extra/http2': 'http2',
   };
 

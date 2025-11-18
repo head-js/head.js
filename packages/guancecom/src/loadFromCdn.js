@@ -25,7 +25,7 @@
     q: [],
   };
 
-  var methods = ['onReady', 'init', 'addAction', 'addError', 'setGlobalContext', 'setUser'];
+  var methods = ['onReady', 'init', 'addAction', 'addError', 'setGlobalContext', 'setGlobalContextProperty', 'setUser'];
   h.factory = function (m) {
     return function () {
       var args = Array.prototype.slice.call(arguments); // eslint-disable-line prefer-rest-params

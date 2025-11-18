@@ -7,8 +7,6 @@
       device: a.device.type,
       device_vendor: a.device.vendor,
       device_model: a.device.model,
-    },
-    client: {
       browser: a.browser.name,
       browser_version: a.browser.version,
       browser_version_major: a.browser.major,

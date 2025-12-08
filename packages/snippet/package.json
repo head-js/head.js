@@ -1,6 +1,6 @@
 {
   "name": "@head.js/snippet",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "@head.js/snippet-*",
   "type": "module",
   "main": "dist/index.cjs",

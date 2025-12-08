@@ -4,26 +4,16 @@ const uaparser = UAParser().withFeatureCheck();
 // console.log(uaparser);
 
 const engine = {
-  name: uaparser.engine.name || '',
+  name: uaparser.engine.name || 'Unknown',
   version: uaparser.engine.version || '',
   major: majorize(uaparser.engine.version) || '',
 };
 
-if (engine.name === 'Blink') {
-  engine.name = 'Chrome';
-}
-
-const browser = engine.name
-  ? {
-    name: engine.name,
-    version: engine.version,
-    major: engine.major,
-  }
-  : {
-    name: uaparser.browser.name || 'Unknown',
-    version: uaparser.browser.version || '',
-    major: majorize(uaparser.browser.version) || '',
-  };
+const b2owser = {
+  name: uaparser.browser.name || 'Unknown',
+  version: uaparser.browser.version || '',
+  major: majorize(uaparser.browser.version) || '',
+};
 
 const agent = {
   device: {
@@ -36,7 +26,8 @@ const agent = {
     version: uaparser.os.version || '',
     major: majorize(uaparser.os.version) || '',
   },
-  browser: browser, // eslint-disable-line object-shorthand
+  browser: engine,
+  b2owser: b2owser, // eslint-disable-line object-shorthand
 };
 
 // @ts-ignore

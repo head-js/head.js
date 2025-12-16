@@ -14,6 +14,7 @@ export default [
     input: 'src/loadFromCdn.js',
 
     external: [
+      'core-js/modules/es.array.index-of.js',
       'core-js/modules/es.array.slice.js',
     ],
 

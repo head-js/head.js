@@ -29,7 +29,8 @@
   h.factory = function (m) {
     return function () {
       var args = Array.prototype.slice.call(arguments); // eslint-disable-line prefer-rest-params
-      h.q.push(function () { // eslint-disable-line prefer-arrow-callback
+      var enqueue = m.indexOf('set') === 0 ? 'unshift' : 'push';
+      h.q[enqueue](function () { // eslint-disable-line prefer-arrow-callback
         var h1 = win[api];
         h1[m].apply(h1, args); // eslint-disable-line prefer-spread
       });

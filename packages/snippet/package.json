@@ -1,6 +1,6 @@
 {
   "name": "@head.js/snippet",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "@head.js/snippet-*",
   "type": "module",
   "main": "dist/index.cjs",
@@ -12,6 +12,9 @@
   },
   "scripts": {
     "build": "rollup --config --strictDeprecations"
+  },
+  "dependencies": {
+    "cheerio": "1.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.18.13",

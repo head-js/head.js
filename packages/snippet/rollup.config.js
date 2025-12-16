@@ -38,4 +38,36 @@ export default [
       { file: 'dist/index.cjs', format: 'cjs', exports: 'named' },
     ],
   },
+  {
+    input: 'src/vite.js',
+
+    external: [
+      'core-js/modules/es.string.trim.js',
+      'core-js/modules/es.regexp.exec.js',
+      'core-js/modules/es.string.replace.js',
+    ],
+
+    plugins: [
+      eslint(),
+
+      json(),
+
+      commonjs({
+        sourceMap: false,
+      }),
+
+      resolve({
+        browser: true,
+      }),
+
+      babel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'bundled',
+      }),
+    ],
+
+    output: [
+      { file: 'dist/vite.cjs', format: 'cjs', exports: 'named' },
+    ],
+  },
 ];

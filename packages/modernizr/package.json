@@ -1,11 +1,11 @@
 {
   "name": "@head.js/snippet-modernizr",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "",
   "main": "dist/modernizr.js",
   "type": "module",
   "scripts": {
-    "build": "rollup --config"
+    "build": "rollup --config && gulp"
   },
   "license": "MIT",
   "dependencies": {

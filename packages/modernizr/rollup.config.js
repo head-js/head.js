@@ -48,6 +48,6 @@ export default [
       }),
     ],
 
-    output: { dir: 'dist/rsrc/js', entryFileNames: 'modernizr-[hash:6].js', format: 'iife', strict: false, globals: { head: 'head' }, exports: 'none', banner },
+    output: { dir: 'dist', entryFileNames: 'head-modernizr.js', format: 'iife', strict: false, globals: { head: 'head' }, exports: 'none', banner },
   },
 ];

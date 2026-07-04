@@ -25,7 +25,7 @@ const r = $ready(['webp', 'http2']).then(() => {
 
   const FEATURES = {
     // BASELINE
-    'es6/promieses': 'promises',
+    'es6/promises': 'promises',
     'es6/arrow': 'arrow',
     'es6/rest-parameters': 'restparameters',
     'es6/spread-array': 'spreadarray',

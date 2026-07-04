@@ -29,7 +29,7 @@ gulp.task('generate', (done) => {
 
 gulp.task('rev', function () {
   return gulp
-    .src([ './dist/modernizr.js' ])
+    .src([ './dist/modernizr.js', './dist/head-modernizr.js' ])
     .pipe(rev())
     .pipe(gulp.dest('./dist'));
 });

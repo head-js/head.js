@@ -8827,17 +8827,17 @@ const __FILE_HEAD_INIT = fs.readFileSync(path.join(__dirname, '../init-74bd0b.js
 
 const HEAD_INIT = __FILE_HEAD_INIT;
 
-const __FILE_HEAD_AGENT = fs.readFileSync(path.join(__dirname, '../agent-100907.js'), 'utf-8').trim();
+const __FILE_HEAD_AGENT = fs.readFileSync(path.join(__dirname, '../agent-0e3c54.js'), 'utf-8').trim();
 
 const HEAD_AGENT = __FILE_HEAD_AGENT;
 
-const __FILE__GUANCECOM_LOAD_FROM_CDN = fs.readFileSync(path.join(__dirname, '../guancecom-load-from-cdn-d0c7f1.js'), 'utf-8').trim();
+const __FILE__GUANCECOM_LOAD_FROM_CDN = fs.readFileSync(path.join(__dirname, '../guancecom-load-from-cdn-e0203a.js'), 'utf-8').trim();
 
 function makeGuancecomLoadFromCdn(sdk = 'https://static.guance.com/browser-sdk/v3/dataflux-rum.js') {
   return __FILE__GUANCECOM_LOAD_FROM_CDN.replace('{{ __sdk__ }}', sdk);
 }
 
-const __FILE__GUANCECOM_INIT = fs.readFileSync(path.join(__dirname, '../guancecom-init-a45739.js'), 'utf-8').trim();
+const __FILE__GUANCECOM_INIT = fs.readFileSync(path.join(__dirname, '../guancecom-init-fff4a9.js'), 'utf-8').trim();
 
 function makeGuancecomInit(config = {}) {
   return __FILE__GUANCECOM_INIT.replace('"{{ __init__ }}"', JSON.stringify(config));
@@ -8881,14 +8881,14 @@ function _transform(code, hs, bs) {
   return $.html();
 }
 
-function makeTransformHtml(sdk, clientToken, applicationId, version, env, options) {
+function makeTransformHtml(sdk, site, clientToken, applicationId, version, env, options) {
   // eslint-disable-line import/prefer-default-export
   const heads = ['<script id="head-init">\n' + HEAD_INIT + '\n</script>', // eslint-disable-line prefer-template
   '<script id="guancecom-load-from-cdn">\n' + makeGuancecomLoadFromCdn(sdk) + '\n</script>' // eslint-disable-line prefer-template
   ];
 
   const opts = _objectSpread2({
-    site: 'https://rum-openway.guance.com',
+    site,
     clientToken,
     applicationId,
     version,

@@ -1,4 +1,4 @@
-/* @head.js/snippet-guancecom 3.2.24-10 load-from-cdn */
+/* @head.js/snippet-guancecom 3.3.21-3 */
 !function(){var e,t,n,r;!function(e,t,n,r,a){var o=e[a]=e[a]||{q:[]
 },i=["onReady","init","addAction","addError","setGlobalContext","setGlobalContextProperty","setUser"]
 ;o.factory=function(t){return function(){

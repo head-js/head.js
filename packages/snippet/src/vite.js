@@ -44,14 +44,14 @@ function _transform(code, hs, bs) {
 }
 
 
-export function makeTransformHtml(sdk, clientToken, applicationId, version, env, options) { // eslint-disable-line import/prefer-default-export
+export function makeTransformHtml(sdk, site, clientToken, applicationId, version, env, options) { // eslint-disable-line import/prefer-default-export
   const heads = [
     '<script id="head-init">\n' + HEAD_INIT + '\n</script>', // eslint-disable-line prefer-template
     '<script id="guancecom-load-from-cdn">\n' + makeGuancecomLoadFromCdn(sdk) + '\n</script>', // eslint-disable-line prefer-template
   ];
 
   const opts = {
-    site: 'https://rum-openway.guance.com',
+    site,
     clientToken,
     applicationId,
     version,
